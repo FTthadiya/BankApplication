@@ -50,6 +50,23 @@ namespace BankApplicationDataAPI.Controllers
             return account;
         }
 
+        [HttpGet("acctNo/{acctNo}")]
+        public async Task<ActionResult<Account>> GetAccountByAcctNo(int acctNo)
+        {
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
+            var account = await _context.Accounts.Include(a => a.Transactions).FirstOrDefaultAsync(a => a.AccountNo == acctNo);
+
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return account;
+        }
+
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

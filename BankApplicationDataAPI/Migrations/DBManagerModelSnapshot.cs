@@ -29,6 +29,9 @@ namespace BankApplicationDataAPI.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("REAL");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
@@ -44,6 +47,7 @@ namespace BankApplicationDataAPI.Migrations
                             AccountId = 1,
                             AccountNo = 1,
                             Balance = 9998282.0,
+                            IsActive = false,
                             UserId = 1
                         },
                         new
@@ -51,6 +55,7 @@ namespace BankApplicationDataAPI.Migrations
                             AccountId = 2,
                             AccountNo = 2,
                             Balance = 999882.71999999997,
+                            IsActive = false,
                             UserId = 1
                         });
                 });
@@ -86,7 +91,7 @@ namespace BankApplicationDataAPI.Migrations
                             TransactionId = 1,
                             AccountId = 1,
                             Amount = 8000.0,
-                            DateTime = new DateTime(2024, 9, 23, 22, 41, 48, 964, DateTimeKind.Utc).AddTicks(5647),
+                            DateTime = new DateTime(2024, 9, 24, 12, 48, 5, 869, DateTimeKind.Utc).AddTicks(3391),
                             Type = "Widthdraw"
                         });
                 });
@@ -105,6 +110,9 @@ namespace BankApplicationDataAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -113,10 +121,6 @@ namespace BankApplicationDataAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Picture")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
@@ -133,9 +137,9 @@ namespace BankApplicationDataAPI.Migrations
                             UserId = 1,
                             Address = "Address",
                             Email = "user@gmail.com",
+                            IsAdmin = true,
                             Password = "123456",
                             Phone = 891231231L,
-                            Role = "USER",
                             UserName = "Test"
                         });
                 });

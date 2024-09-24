@@ -16,5 +16,6 @@ namespace BankApplicationDataAPI.Models
         public Account? Account { get; set; }
 
         public DateTime DateTime { get; set; } = DateTime.UtcNow;
+
     }
 }

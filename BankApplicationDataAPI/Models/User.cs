@@ -16,7 +16,7 @@
 
         public string? Picture { get; set; }
 
-        public string Role { get; set; }
+        public Boolean IsAdmin { get; set; }
 
         public ICollection<Account>? Accounts { get; set; } 
 

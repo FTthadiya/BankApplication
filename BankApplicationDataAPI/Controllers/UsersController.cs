@@ -29,7 +29,7 @@ namespace BankApplicationDataAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.Users.Include(u => u.Accounts).ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
@@ -41,6 +41,23 @@ namespace BankApplicationDataAPI.Controllers
               return NotFound();
           }
             var user = await _context.Users.Include(u => u.Accounts).FirstOrDefaultAsync(u => u.UserId == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
+        }
+
+        [HttpGet("email/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string email)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.Include(u => u.Accounts).FirstOrDefaultAsync(u => u.Email.Equals(email));
 
             if (user == null)
             {

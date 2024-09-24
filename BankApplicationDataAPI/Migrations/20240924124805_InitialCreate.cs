@@ -25,7 +25,7 @@ namespace BankApplicationDataAPI.Migrations
                     Phone = table.Column<long>(type: "INTEGER", nullable: false),
                     Address = table.Column<string>(type: "TEXT", nullable: false),
                     Picture = table.Column<string>(type: "TEXT", nullable: true),
-                    Role = table.Column<string>(type: "TEXT", nullable: false)
+                    IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,6 +40,7 @@ namespace BankApplicationDataAPI.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     AccountNo = table.Column<int>(type: "INTEGER", nullable: false),
                     Balance = table.Column<double>(type: "REAL", nullable: false),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -77,22 +78,22 @@ namespace BankApplicationDataAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "Address", "Email", "Password", "Phone", "Picture", "Role", "UserName" },
-                values: new object[] { 1, "Address", "user@gmail.com", "123456", 891231231L, null, "USER", "Test" });
+                columns: new[] { "UserId", "Address", "Email", "IsAdmin", "Password", "Phone", "Picture", "UserName" },
+                values: new object[] { 1, "Address", "user@gmail.com", true, "123456", 891231231L, null, "Test" });
 
             migrationBuilder.InsertData(
                 table: "Accounts",
-                columns: new[] { "AccountId", "AccountNo", "Balance", "UserId" },
+                columns: new[] { "AccountId", "AccountNo", "Balance", "IsActive", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, 9998282.0, 1 },
-                    { 2, 2, 999882.71999999997, 1 }
+                    { 1, 1, 9998282.0, false, 1 },
+                    { 2, 2, 999882.71999999997, false, 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Transactions",
                 columns: new[] { "TransactionId", "AccountId", "Amount", "DateTime", "Type" },
-                values: new object[] { 1, 1, 8000.0, new DateTime(2024, 9, 23, 22, 41, 48, 964, DateTimeKind.Utc).AddTicks(5647), "Widthdraw" });
+                values: new object[] { 1, 1, 8000.0, new DateTime(2024, 9, 24, 12, 48, 5, 869, DateTimeKind.Utc).AddTicks(3391), "Widthdraw" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_UserId",
