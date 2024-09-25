@@ -67,6 +67,23 @@ namespace BankApplicationDataAPI.Controllers
             return account;
         }
 
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<Account>>> GetAccountByUserId(int userId)
+        {
+            if (_context.Accounts == null)
+            {
+                return NotFound();
+            }
+            var accounts = await _context.Accounts.Include(a => a.Transactions).Where(a => a.UserId == userId).ToListAsync();
+
+            if (accounts == null)
+            {
+                return NotFound();
+            }
+
+            return accounts;
+        }
+
         // PUT: api/Accounts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

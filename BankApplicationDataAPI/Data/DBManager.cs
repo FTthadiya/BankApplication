@@ -33,6 +33,7 @@ namespace BankApplicationDataAPI.Data
             Account account1 = new Account();
             account1.AccountId = 1;
             account1.AccountNo = 0001;
+            account1.AccountName = "Savings account";
             account1.Balance = 9998282;
             account1.UserId = 1;
             accounts.Add(account1);
@@ -40,6 +41,7 @@ namespace BankApplicationDataAPI.Data
             Account account2 = new Account();
             account2.AccountId = 2;
             account2.AccountNo = 0002;
+            account2.AccountName = "Current account";
             account2.Balance = 999882.72;
             account2.UserId = 1;
             accounts.Add(account2);
@@ -48,6 +50,7 @@ namespace BankApplicationDataAPI.Data
             transaction1.TransactionId = 1;
             transaction1.Type = "Widthdraw";
             transaction1.Amount = 8000.00;
+            transaction1.Description = "Funds";
             transaction1.AccountId = 1;
             transactions.Add(transaction1);
 

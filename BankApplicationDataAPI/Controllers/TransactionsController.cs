@@ -50,6 +50,23 @@ namespace BankApplicationDataAPI.Controllers
             return transaction;
         }
 
+        [HttpGet("account/{acctId}")]
+        public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactionsByAccount(int acctId)
+        {
+            if (_context.Transactions == null)
+            {
+                return NotFound();
+            }
+            var transactions = await _context.Transactions.Where(t => t.AccountId == acctId).ToListAsync();
+
+            if (transactions == null)
+            {
+                return NotFound();
+            }
+
+            return transactions;
+        }
+
         // PUT: api/Transactions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -99,7 +116,7 @@ namespace BankApplicationDataAPI.Controllers
                 return NotFound("Account " + transaction.AccountId + " does not exist");
             }
 
-            if (transaction.Type == "Widthdraw")
+            if (transaction.Type == "Withdraw")
             {
                 if (account.Balance > transaction.Amount)
                 {

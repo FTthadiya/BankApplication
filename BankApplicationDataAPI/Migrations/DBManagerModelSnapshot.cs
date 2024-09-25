@@ -23,6 +23,10 @@ namespace BankApplicationDataAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AccountName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("AccountNo")
                         .HasColumnType("INTEGER");
 
@@ -45,6 +49,7 @@ namespace BankApplicationDataAPI.Migrations
                         new
                         {
                             AccountId = 1,
+                            AccountName = "Current account",
                             AccountNo = 1,
                             Balance = 9998282.0,
                             IsActive = false,
@@ -53,6 +58,7 @@ namespace BankApplicationDataAPI.Migrations
                         new
                         {
                             AccountId = 2,
+                            AccountName = "Account",
                             AccountNo = 2,
                             Balance = 999882.71999999997,
                             IsActive = false,
@@ -75,6 +81,10 @@ namespace BankApplicationDataAPI.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -91,7 +101,8 @@ namespace BankApplicationDataAPI.Migrations
                             TransactionId = 1,
                             AccountId = 1,
                             Amount = 8000.0,
-                            DateTime = new DateTime(2024, 9, 24, 12, 48, 5, 869, DateTimeKind.Utc).AddTicks(3391),
+                            DateTime = new DateTime(2024, 9, 25, 5, 24, 58, 53, DateTimeKind.Utc).AddTicks(6725),
+                            Description = "Funds",
                             Type = "Widthdraw"
                         });
                 });

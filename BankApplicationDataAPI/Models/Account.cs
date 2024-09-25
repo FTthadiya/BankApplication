@@ -9,6 +9,8 @@ namespace BankApplicationDataAPI.Models
 
         public int AccountNo { get; set; }
 
+        public string AccountName { get; set; } = "Account";
+
         public double Balance { get; set; }
 
         public bool IsActive { get; set; }
