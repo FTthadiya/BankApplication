@@ -32,3 +32,4 @@ C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplicatio
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankWebApplication\bin\Debug\net6.0\RestSharp.dll
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankWebApplication\obj\Debug\net6.0\BankWebApplication.csproj.AssemblyReference.cache
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankWebApplication\obj\Debug\net6.0\BankWebA.A4ACEBFE.Up2Date
+C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankWebApplication\obj\Debug\net6.0\BankWebApplication.sourcelink.json

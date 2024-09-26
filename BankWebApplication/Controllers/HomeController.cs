@@ -18,8 +18,19 @@ namespace BankWebApplication.Controllers
             return PartialView();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Welcome()
         {
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return PartialView("Overview");
+            }
+
+            return PartialView("Welcome");
+        }
+
+        public IActionResult Overview()
+        {
+            Request.Cookies.ContainsKey("UserID");
             return View();
         }
 

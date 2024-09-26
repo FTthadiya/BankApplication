@@ -7,7 +7,6 @@ using RestSharp;
 namespace BankWebApplication.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class SignupController : Controller
     {
         private RestClient client = new RestClient("http://localhost:5104");
@@ -42,10 +41,9 @@ namespace BankWebApplication.Controllers
         }
         // View request handlers
         [HttpGet]
-        public IActionResult DefaultView()
+        public ActionResult SignupView()
         {
-            // Return the partial view as HTML
-            return PartialView("SignupDefaultView");
+            return PartialView("SignupView");
         }
 
         [HttpGet("error")]

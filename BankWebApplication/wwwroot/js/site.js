@@ -7,17 +7,11 @@ var test = "test";
 
 
 function loadView(status) {
-    var apiUrl = '/api/signup/';
-    if (status === "authview")
-        apiUrl = '/api/login/authview';
-    if (status === "SignupError")
-        apiUrl = '/api/signup/error';
-    if (status === "about")
-        apiUrl = '/api/about/view';
-    if (status === "logout")
-        apiUrl = '/api/logout';
-
-    console.log("Hello " + apiUrl);
+    var apiUrl = '/home/welcome';
+    if (status === "login")
+        apiUrl = '/api/login/';
+    if (status === "signup")
+        apiUrl = '/api/signup/';
 
     fetch(apiUrl)
         .then(response => {

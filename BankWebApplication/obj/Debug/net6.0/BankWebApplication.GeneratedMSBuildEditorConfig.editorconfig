@@ -22,8 +22,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/Overview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxPdmVydmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/Welcome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXZWxjb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Login/LoginView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5WaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Shared/Error.cshtml]
@@ -38,12 +46,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/SignupDefaultView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXFNpZ251cERlZmF1bHRWaWV3LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/SignupErrorView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXFNpZ251cEVycm9yVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/SignupView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXFNpZ251cFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/_ViewImports.cshtml]

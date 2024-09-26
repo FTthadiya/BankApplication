@@ -45,5 +45,11 @@ namespace BankWebApplication.Controllers
             }
         }
 
+
+        [HttpGet]
+        public ActionResult LoginView()
+        {
+            return PartialView("LoginView");
+        }
     }
 }
