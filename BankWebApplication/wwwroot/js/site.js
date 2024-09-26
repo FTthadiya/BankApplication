@@ -5,13 +5,30 @@
 
 var test = "test";
 
+function getCookieByName(name) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        cookie = cookie.trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
 
-function loadView(status) {
+
+function loadView(view) {
     var apiUrl = '/home/welcome';
-    if (status === "login")
+    if (view === "login")
         apiUrl = '/api/login/';
-    if (status === "signup")
+    if (view === "signup")
         apiUrl = '/api/signup/';
+
+    const userId = getCookieByName("userId")
+    if (userId != null)
+    {
+        document.getElementById('logoutBtn').style.display = "block";
+    }
 
     fetch(apiUrl)
         .then(response => {
@@ -23,9 +40,6 @@ function loadView(status) {
         .then(data => {
             // Handle the data from the API
             document.getElementById('main').innerHTML = data;
-            if (status === "logout") {
-                document.getElementById('LogoutButton').style.display = "none";
-            }
         })
         .catch(error => {
             // Handle any errors that occurred during the fetch
@@ -34,60 +48,102 @@ function loadView(status) {
 
 }
 
+const logout = () => {
+    document.getElementById('logoutBtn').style.display = "none";
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    loadView();
+}
 
-function performAuth() {
+const login = async () => {
 
-    var name = document.getElementById('SName').value;
-    var password = document.getElementById('SPass').value;
+
+    var email = document.getElementById('emailInput').value;
+    var password = document.getElementById('passwordInput').value;
+
+    if (email == null || email == "" || password == "" || password == null) {
+        console.log(email + " " + password)
+        alert("Please enter email and password")
+        return;
+    }
+
     var data = {
-        UserName: name,
-        PassWord: password
+        email: email,
+        password: password
     };
-    console.error(data);
-    const apiUrl = '/api/login/auth';
 
+    const apiUrl = '/api/login/';
     const headers = {
-        'Content-Type': 'application/json', // Specify the content type as JSON if you're sending JSON data
-        // Add any other headers you need here
+        'Content-Type': 'application/json',
     };
 
     const requestOptions = {
         method: 'POST',
         headers: headers,
-        body: JSON.stringify(data) // Convert the data object to a JSON string
+        body: JSON.stringify(data)
     };
 
-    fetch(apiUrl, requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Handle the data from the API
-            const jsonObject = data;
-            if (jsonObject.login) {
-                loadView("authview");
-                document.getElementById('LogoutButton').style.display = "block";
-            }
-            else {
-                loadView("error");
-            }
+    const res = await fetch(apiUrl, requestOptions);
 
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the fetch
-            console.error('Fetch error:', error);
-        });
+    if (res.ok) {
+
+        loadView("Welcome")
+    }
+    else {
+
+        alert("Username or password invalid")
+    }
 
 }
 
+//function performAuth() {
 
-const signup = () => {
+//    var name = document.getElementById('SName').value;
+//    var password = document.getElementById('SPass').value;
+//    var data = {
+//        UserName: name,
+//        PassWord: password
+//    };
+//    console.error(data);
+//    const apiUrl = '/api/login/auth';
+
+//    const headers = {
+//        'Content-Type': 'application/json', // Specify the content type as JSON if you're sending JSON data
+//        // Add any other headers you need here
+//    };
+
+//    const requestOptions = {
+//        method: 'POST',
+//        headers: headers,
+//        body: JSON.stringify(data) // Convert the data object to a JSON string
+//    };
+
+//    fetch(apiUrl, requestOptions)
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error('Network response was not ok');
+//            }
+//            return response.json();
+//        })
+//        .then(data => {
+//            // Handle the data from the API
+//            const jsonObject = data;
+//            if (jsonObject.login) {
+//                loadView("authview");
+//                document.getElementById('LogoutButton').style.display = "block";
+//            }
+//            else {
+//                loadView("error");
+//            }
+
+//        })
+//        .catch(error => {
+//            // Handle any errors that occurred during the fetch
+//            console.error('Fetch error:', error);
+//        });
+
+//}
 
 
-}
 
 
 document.addEventListener("DOMContentLoaded", loadView);

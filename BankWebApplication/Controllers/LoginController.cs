@@ -30,6 +30,7 @@ namespace BankWebApplication.Controllers
                 {
                     if (existingUser.Password.Equals(user.Password))
                     {
+                        Response.Cookies.Append("userId", existingUser.UserId.ToString());
                         return Ok("Authenticated");
                     }
                     else 

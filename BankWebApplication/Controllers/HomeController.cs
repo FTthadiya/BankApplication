@@ -22,16 +22,15 @@ namespace BankWebApplication.Controllers
         {
             if (Request.Cookies.ContainsKey("UserID"))
             {
-                return PartialView("Overview");
+                return PartialView("UserDashboard");
             }
 
             return PartialView("Welcome");
         }
 
-        public IActionResult Overview()
+        public IActionResult UserDashboard()
         {
-            Request.Cookies.ContainsKey("UserID");
-            return View();
+            return PartialView("UserDashboard");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
