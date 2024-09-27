@@ -27,8 +27,18 @@ namespace BankApplicationDataAPI.Data
             user1.Email = "user@gmail.com";
             user1.Address = "Address";
             user1.Phone = 0891231231;
-            user1.IsAdmin = true;
+            user1.IsAdmin = false;
             users.Add(user1);
+
+            User user2 = new User();
+            user2.UserId = 2;
+            user2.UserName = "Test";
+            user2.Password = "123456";
+            user2.Email = "admin@gmail.com";
+            user2.Address = "Address";
+            user2.Phone = 0891231231;
+            user2.IsAdmin = true;
+            users.Add(user2);
 
             Account account1 = new Account();
             account1.AccountId = 1;

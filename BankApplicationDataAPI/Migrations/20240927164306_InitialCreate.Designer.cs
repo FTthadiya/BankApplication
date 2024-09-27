@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankApplicationDataAPI.Migrations
 {
     [DbContext(typeof(DBManager))]
-    [Migration("20240925052458_InitialCreate")]
+    [Migration("20240927164306_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,7 +52,7 @@ namespace BankApplicationDataAPI.Migrations
                         new
                         {
                             AccountId = 1,
-                            AccountName = "Current account",
+                            AccountName = "Savings account",
                             AccountNo = 1,
                             Balance = 9998282.0,
                             IsActive = false,
@@ -61,7 +61,7 @@ namespace BankApplicationDataAPI.Migrations
                         new
                         {
                             AccountId = 2,
-                            AccountName = "Account",
+                            AccountName = "Current account",
                             AccountNo = 2,
                             Balance = 999882.71999999997,
                             IsActive = false,
@@ -104,7 +104,7 @@ namespace BankApplicationDataAPI.Migrations
                             TransactionId = 1,
                             AccountId = 1,
                             Amount = 8000.0,
-                            DateTime = new DateTime(2024, 9, 25, 5, 24, 58, 53, DateTimeKind.Utc).AddTicks(6725),
+                            DateTime = new DateTime(2024, 9, 27, 16, 43, 6, 691, DateTimeKind.Utc).AddTicks(4018),
                             Description = "Funds",
                             Type = "Widthdraw"
                         });
@@ -151,6 +151,16 @@ namespace BankApplicationDataAPI.Migrations
                             UserId = 1,
                             Address = "Address",
                             Email = "user@gmail.com",
+                            IsAdmin = false,
+                            Password = "123456",
+                            Phone = 891231231L,
+                            UserName = "Test"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Address = "Address",
+                            Email = "admin@gmail.com",
                             IsAdmin = true,
                             Password = "123456",
                             Phone = 891231231L,

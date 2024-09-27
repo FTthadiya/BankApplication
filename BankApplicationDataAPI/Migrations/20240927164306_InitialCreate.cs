@@ -81,21 +81,25 @@ namespace BankApplicationDataAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "Address", "Email", "IsAdmin", "Password", "Phone", "Picture", "UserName" },
-                values: new object[] { 1, "Address", "user@gmail.com", true, "123456", 891231231L, null, "Test" });
+                values: new object[,]
+                {
+                    { 1, "Address", "user@gmail.com", false, "123456", 891231231L, null, "Test" },
+                    { 2, "Address", "admin@gmail.com", true, "123456", 891231231L, null, "Test" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Accounts",
                 columns: new[] { "AccountId", "AccountName", "AccountNo", "Balance", "IsActive", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Current account", 1, 9998282.0, false, 1 },
-                    { 2, "Account", 2, 999882.71999999997, false, 1 }
+                    { 1, "Savings account", 1, 9998282.0, false, 1 },
+                    { 2, "Current account", 2, 999882.71999999997, false, 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Transactions",
                 columns: new[] { "TransactionId", "AccountId", "Amount", "DateTime", "Description", "Type" },
-                values: new object[] { 1, 1, 8000.0, new DateTime(2024, 9, 25, 5, 24, 58, 53, DateTimeKind.Utc).AddTicks(6725), "Funds", "Widthdraw" });
+                values: new object[] { 1, 1, 8000.0, new DateTime(2024, 9, 27, 16, 43, 6, 691, DateTimeKind.Utc).AddTicks(4018), "Funds", "Widthdraw" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_UserId",
