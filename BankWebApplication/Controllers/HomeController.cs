@@ -15,22 +15,30 @@ namespace BankWebApplication.Controllers
 
         public IActionResult Index()
         {
-            return PartialView();
-        }
-
-        public IActionResult Welcome()
-        {
             if (Request.Cookies.ContainsKey("UserID"))
             {
-                return PartialView("UserDashboard");
+                return View();
             }
 
-            return PartialView("Welcome");
+            return View("Welcome");
         }
 
-        public IActionResult UserDashboard()
+        [HttpGet("login")]
+        public IActionResult Login() { 
+            return View("LoginView"); 
+        }
+
+        [HttpGet("accounts")]
+        public IActionResult Accounts()
         {
-            return PartialView("UserDashboard");
+            return View("AccountsView");
+        }
+
+        [HttpGet("transactions/{id}")]
+        public IActionResult Transactions(int id)
+        {
+            ViewBag.acctId = id;
+            return View("Transactions");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

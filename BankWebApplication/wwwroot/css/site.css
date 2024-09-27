@@ -14,5 +14,5 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background: linear-gradient(to bottom right,#D4D3DD 0%, #EFEFBB 100%);
 }

@@ -3,9 +3,9 @@
 
 // Write your JavaScript code.
 
-var test = "test";
+//var test = "test";
 
-function getCookieByName(name) {
+const getCookieByName = (name) => {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
         cookie = cookie.trim();
@@ -16,84 +16,66 @@ function getCookieByName(name) {
     return null;
 }
 
-
-function loadView(view) {
-    var apiUrl = '/home/welcome';
-    if (view === "login")
-        apiUrl = '/api/login/';
-    if (view === "signup")
-        apiUrl = '/api/signup/';
-
-    const userId = getCookieByName("userId")
-    if (userId != null)
-    {
-        document.getElementById('logoutBtn').style.display = "block";
-    }
-
-    fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            // Handle the data from the API
-            document.getElementById('main').innerHTML = data;
-        })
-        .catch(error => {
-            // Handle any errors that occurred during the fetch
-            console.error('Fetch error:', error);
-        });
-
+const userId = getCookieByName("userId")
+if (userId != null) {
+    document.getElementById('logoutBtn').style.display = "block";
+}
+else {
+    document.getElementById('logoutBtn').style.display = "none";
 }
 
 const logout = () => {
     document.getElementById('logoutBtn').style.display = "none";
     document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    loadView();
+    window.location.href = '/';
 }
 
-const login = async () => {
+
+//const loadView = (view) => {
+//    var apiUrl = '/home/welcome/';
+//    if (view === "login")
+//        apiUrl = '/api/login/';
+//    if (view === "signup")
+//        apiUrl = '/api/signup/';
+//    if (view == "accounts")
+//        apiUrl = '/api/account/';
+
+//    Toastify({
+//        text: "Page " + apiUrl,
+//        duration: 1000,
+//        newWindow: true,
+//        gravity: "top", // `top` or `bottom`
+//        position: "right", // `left`, `center` or `right`
+//        stopOnFocus: true, // Prevents dismissing of toast on hover
+//        style: {
+//            background: "#ffc107",
+//            color: "#000000"
+//        },
+//        onClick: function () { } // Callback after click
+//    }).showToast();
 
 
-    var email = document.getElementById('emailInput').value;
-    var password = document.getElementById('passwordInput').value;
+//    fetch(apiUrl)
+//        .then(response => {
+//            if (!response.ok) {
+//                throw new Error('Network response was not ok');
+//            }
+//            return response.text();
+//        })
+//        .then(data => {
+//            // Handle the data from the API
+//            document.getElementById('main').innerHTML = data;
+//        })
+//        .catch(error => {
+//            // Handle any errors that occurred during the fetch
+//            console.error('Fetch error:', error);
+//        });
 
-    if (email == null || email == "" || password == "" || password == null) {
-        console.log(email + " " + password)
-        alert("Please enter email and password")
-        return;
-    }
+//}
 
-    var data = {
-        email: email,
-        password: password
-    };
 
-    const apiUrl = '/api/login/';
-    const headers = {
-        'Content-Type': 'application/json',
-    };
 
-    const requestOptions = {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(data)
-    };
 
-    const res = await fetch(apiUrl, requestOptions);
-
-    if (res.ok) {
-
-        loadView("Welcome")
-    }
-    else {
-
-        alert("Username or password invalid")
-    }
-
-}
 
 //function performAuth() {
 
@@ -146,4 +128,4 @@ const login = async () => {
 
 
 
-document.addEventListener("DOMContentLoaded", loadView);
+//document.addEventListener("DOMContentLoaded", loadView);

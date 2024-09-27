@@ -573,3 +573,4 @@ C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplicatio
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankApplicationDataAPI\obj\Debug\net6.0\BankApplicationDataAPI.pdb
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankApplicationDataAPI\obj\Debug\net6.0\BankApplicationDataAPI.genruntimeconfig.cache
 C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankApplicationDataAPI\obj\Debug\net6.0\ref\BankApplicationDataAPI.dll
+C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankApplicationDataAPI\obj\Debug\net6.0\BankApplicationDataAPI.sourcelink.json

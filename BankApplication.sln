@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankApplicationDataAPI", "BankApplicationDataAPI\BankApplicationDataAPI.csproj", "{D3F39086-EACD-470A-A370-36C9845471A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankWebApplication", "BankWebApplication\BankWebApplication.csproj", "{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankWebApplication", "BankWebApplication\BankWebApplication.csproj", "{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

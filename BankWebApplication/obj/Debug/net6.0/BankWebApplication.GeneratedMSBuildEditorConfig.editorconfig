@@ -18,8 +18,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\BankApplication\BankWebApplication
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/AccountsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2NvdW50c1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/LoginView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpblZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/SignupView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWdudXBWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/Transactions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFuc2FjdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Home/UserDashboard.cshtml]
@@ -30,28 +46,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXZWxjb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Login/LoginView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW5WaWV3LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/SignupErrorView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXFNpZ251cEVycm9yVmlldy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/Signup/SignupView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnbnVwXFNpZ251cFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/BankApplication/BankWebApplication/Views/_ViewImports.cshtml]
