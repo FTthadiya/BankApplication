@@ -5,6 +5,8 @@
 
 //var test = "test";
 
+
+
 const getCookieByName = (name) => {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
@@ -15,8 +17,84 @@ const getCookieByName = (name) => {
     }
     return null;
 }
+const userId = getCookieByName("userId");
 
-const userId = getCookieByName("userId")
+const verifyLogin = async() => {
+    const user = getCookieByName("userId");
+    if (user == null) {
+        Toastify({
+            text: "Please login to continue",
+            duration: 3000,
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+        await new Promise(r => setTimeout(r, 1000));
+        window.location.href = '/login';
+
+    }
+
+}
+
+const getCurUser = async () => {
+    try {
+
+        const userId = getCookieByName("userId");
+
+        const apiUrl = '/api/user/' + userId;
+
+        const res = await fetch(apiUrl);
+
+        if (res.ok) {
+
+            const data = await res.json();
+            return data;
+        }
+        else {
+
+            const data = await res.json();
+
+            Toastify({
+                text: `${data.detail}`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+    }
+    catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
+
+};
+
+
 if (userId != null) {
     document.getElementById('logoutBtn').style.display = "block";
 }
@@ -31,101 +109,12 @@ const logout = () => {
 }
 
 
-//const loadView = (view) => {
-//    var apiUrl = '/home/welcome/';
-//    if (view === "login")
-//        apiUrl = '/api/login/';
-//    if (view === "signup")
-//        apiUrl = '/api/signup/';
-//    if (view == "accounts")
-//        apiUrl = '/api/account/';
+const showMessageBox = (data) => {
+    document.getElementById('messageBoxOverlay').style.visibility = "visible";
+    document.getElementById('messageBoxTitle').innerText = data.title;
+    document.getElementById('messageBoxBody').innerText = data.desc;
+}
 
-//    Toastify({
-//        text: "Page " + apiUrl,
-//        duration: 1000,
-//        newWindow: true,
-//        gravity: "top", // `top` or `bottom`
-//        position: "right", // `left`, `center` or `right`
-//        stopOnFocus: true, // Prevents dismissing of toast on hover
-//        style: {
-//            background: "#ffc107",
-//            color: "#000000"
-//        },
-//        onClick: function () { } // Callback after click
-//    }).showToast();
-
-
-//    fetch(apiUrl)
-//        .then(response => {
-//            if (!response.ok) {
-//                throw new Error('Network response was not ok');
-//            }
-//            return response.text();
-//        })
-//        .then(data => {
-//            // Handle the data from the API
-//            document.getElementById('main').innerHTML = data;
-//        })
-//        .catch(error => {
-//            // Handle any errors that occurred during the fetch
-//            console.error('Fetch error:', error);
-//        });
-
-//}
-
-
-
-
-
-//function performAuth() {
-
-//    var name = document.getElementById('SName').value;
-//    var password = document.getElementById('SPass').value;
-//    var data = {
-//        UserName: name,
-//        PassWord: password
-//    };
-//    console.error(data);
-//    const apiUrl = '/api/login/auth';
-
-//    const headers = {
-//        'Content-Type': 'application/json', // Specify the content type as JSON if you're sending JSON data
-//        // Add any other headers you need here
-//    };
-
-//    const requestOptions = {
-//        method: 'POST',
-//        headers: headers,
-//        body: JSON.stringify(data) // Convert the data object to a JSON string
-//    };
-
-//    fetch(apiUrl, requestOptions)
-//        .then(response => {
-//            if (!response.ok) {
-//                throw new Error('Network response was not ok');
-//            }
-//            return response.json();
-//        })
-//        .then(data => {
-//            // Handle the data from the API
-//            const jsonObject = data;
-//            if (jsonObject.login) {
-//                loadView("authview");
-//                document.getElementById('LogoutButton').style.display = "block";
-//            }
-//            else {
-//                loadView("error");
-//            }
-
-//        })
-//        .catch(error => {
-//            // Handle any errors that occurred during the fetch
-//            console.error('Fetch error:', error);
-//        });
-
-//}
-
-
-
-
-//document.addEventListener("DOMContentLoaded", loadView);
+const closeMessageBox = () => {
+    document.getElementById('messageBoxOverlay').style.visibility = "collapse";
+}

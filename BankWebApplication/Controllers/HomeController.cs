@@ -25,21 +25,34 @@ namespace BankWebApplication.Controllers
 
         [HttpGet("login")]
         public IActionResult Login() { 
-            return View("LoginView"); 
+            return View(); 
         }
 
         [HttpGet("accounts")]
         public IActionResult Accounts()
         {
-            return View("AccountsView");
+            return View();
         }
 
         [HttpGet("transactions/{id}")]
         public IActionResult Transactions(int id)
         {
             ViewBag.acctId = id;
-            return View("Transactions");
+            return View();
         }
+
+        [HttpGet("transfer")]
+        public IActionResult Transfer(int id)
+        {
+            return View();
+        }
+
+        [HttpGet("profile")]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

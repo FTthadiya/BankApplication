@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\js\\transactions.js"
     },
     {
+      "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\js\\transfer.js",
+      "PackagePath": "staticwebassets\\js\\transfer.js"
+    },
+    {
       "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\js\\welcome.js",
       "PackagePath": "staticwebassets\\js\\welcome.js"
     },

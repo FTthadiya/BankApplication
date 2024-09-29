@@ -42,15 +42,9 @@ namespace BankWebApplication.Controllers
             }
             catch (Exception e)
             {
-                return Problem("Unexpected error occured: " + e.Message);
+                Console.WriteLine(e.Message);
+                return Problem("Unexpected error occured in server");
             }
-        }
-
-
-        [HttpGet]
-        public ActionResult LoginView()
-        {
-            return PartialView("LoginView");
         }
     }
 }

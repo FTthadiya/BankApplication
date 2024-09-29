@@ -53,6 +53,8 @@
             className: "success",
             onClick: function () { } // Callback after click
         }).showToast();
+        await new Promise(r => setTimeout(r, 1000));
+
         window.location.href = "/";
     }
     else {

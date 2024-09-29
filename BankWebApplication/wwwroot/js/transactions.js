@@ -1,40 +1,81 @@
 ﻿var transactions;
 
-const loadData = async (id) => {
+const loadTransactionsData = async (id) => {
 
-    const apiUrl = '/api/transaction/account/' + id;
+    try {
 
-    const res = await fetch(apiUrl);
+        const apiUrl = '/api/transaction/account/' + id;
 
-    const data = await res.json();
+        console.log("Transcations CALLED");
 
-    transactions = data;
+        const res = await fetch(apiUrl);
 
-    console.log(data);
+        if (res.ok) {
+            const data = await res.json();
 
-    if (data.length == 0) {
-        document.getElementById("accountsList").innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No accounts found</div>`;
+            transactions = data;
+
+            console.log(data);
+            renderTransactions(data);
+        }
+        else {
+
+            const data = await res.json();
+
+            Toastify({
+                text: `${data.detail}`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
 
     }
-    else {
-        renderTransactions(data);
+    catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
     }
 
 }
 
 const renderTransactions = (data) => {
-    const elements = data.map(a =>
 
-        `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
-                <h4>${a.transactionId}</h4>
-                <p>${a.type}</p>
-                <p>Amount: ${a.amount}</p>
-                <button class="btn btn-warning" onclick="test()">Description</button>
-        </div>`
+    if (data.length == 0) {
+        document.getElementById("transactionsList").innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No transactions found</div>`;
+    }
+    else {
+        const elements = data.slice(0).reverse().map(a =>
 
-    ).join('')
+            `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
+                    <p>${new Date(a.dateTime).toLocaleString()}</p>
+                    <p>${a.type}</p>
+                    <p>Amount: ${a.amount}</p>
+                    <button class="btn btn-warning" onclick="showMessageBox({title: 'Transaction - ${a.amount} ${a.type}', desc: '${a.description}' })">Description</button>
+            </div>`
 
-    document.getElementById("accountsList").innerHTML = elements;
+        ).join('')
+
+        document.getElementById("transactionsList").innerHTML = elements;
+    }
+
 }
 
 

@@ -10,8 +10,22 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
+    <div id="messageBoxOverlay" class="position-absolute h-100 w-100 d-flex justify-content-center" style="z-index: 100; background: #111111CC; visibility:collapse;">
+        <div class="card mt-5 p-5 w-50 h-50">
+            <div class="card-title"><h3 id="messageBoxTitle">Title</h3></div>
+            <div id="messageBoxBody" class="card-body h-75 overflow-auto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit mattis finibus. Praesent auctor, nisl vitae ultricies facilisis, diam nisi cursus tellus, id posuere enim massa et risus. Maecenas placerat nisl at ligula ornare, non feugiat urna blandit. Nunc mollis consectetur ante, eget posuere odio accumsan vitae. Vivamus non quam urna. Fusce condimentum nibh non elit luctus convallis. Phasellus sed congue tellus. Phasellus sagittis finibus lorem, et tempor urna commodo id. Cras pharetra, lectus at tristique laoreet, lorem mi lobortis felis, ac hendrerit mauris eros vel libero. Mauris vitae nibh interdum, laoreet est quis, malesuada purus. Suspendisse potenti. Nam pulvinar lorem ac laoreet maximus.
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit mattis finibus. Praesent auctor, nisl vitae ultricies facilisis, diam nisi cursus tellus, id posuere enim massa et risus. Maecenas placerat nisl at ligula ornare, non feugiat urna blandit. Nunc mollis consectetur ante, eget posuere odio accumsan vitae. Vivamus non quam urna. Fusce condimentum nibh non elit luctus convallis. Phasellus sed congue tellus. Phasellus sagittis finibus lorem, et tempor urna commodo id. Cras pharetra, lectus at tristique laoreet, lorem mi lobortis felis, ac hendrerit mauris eros vel libero. Mauris vitae nibh interdum, laoreet est quis, malesuada purus. Suspendisse potenti. Nam pulvinar lorem ac laoreet maximus.
+
+                Nullam lacus leo, mollis ut nunc ut, molestie consectetur enim. Nulla eu nunc vitae turpis placerat tempus feugiat vel est. Nam porttitor, purus nec faucibus placerat, libero est imperdiet nunc, vel facilisis libero urna iaculis odio. Nunc mollis nisl felis, nec tempus nulla luctus ac. Proin luctus sed orci eu laoreet. Proin vel suscipit tortor. Quisque vestibulum tempor turpis, at laoreet lectus posuere nec. Aliquam laoreet nulla in pulvinar varius. Phasellus sed ligula sit amet lacus sollicitudin tincidunt nec non massa. Suspendisse non nulla ut enim tincidunt mattis non vitae massa. Nam in leo vulputate, finibus lectus posuere, interdum purus.
+               
+            </div>
+            <button class="btn-warning rounded-3 mt-5 w-25 align-self-end" onclick="closeMessageBox()">Close</button>
+        </div>
+    </div>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 px-3 py-2">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 px-3 py-3">
             <div class="container-fluid">
                 <a class="navbar-brand text-warning" asp-area="" asp-controller="Home" asp-action="Index">Easy<small class="text-muted">Bank</small></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,7 +35,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-nav flex-grow-1">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Accounts">Accounts</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Transfer">Transfer</a>
                     </div>
                 </div>
             </div>
