@@ -8,10 +8,10 @@ const displayUser = async () => {
         if (userDetails.picture != null) {
             setPictureFromString(userDetails.picture);
         }
-        document.getElementById('profileName').innerText = userDetails.userName;
-        document.getElementById('profileEmail').innerText = userDetails.email;
-        document.getElementById('profilePhone').innerText = userDetails.phone;
-        document.getElementById('profileAddress').innerText = userDetails.address;
+        document.getElementById('profileName').value = userDetails.userName;
+        document.getElementById('profileEmail').value = userDetails.email;
+        document.getElementById('profilePhone').value = userDetails.phone;
+        document.getElementById('profileAddress').value = userDetails.address;
     }
     else {
         alert("Error profile")
@@ -80,6 +80,7 @@ const updateUser = async () => {
                 Phone: phone,
                 Email: email,
                 Address: address,
+                Picture: userDetails.picture
             };
         }
         else {
