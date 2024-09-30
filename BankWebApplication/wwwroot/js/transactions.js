@@ -1,4 +1,7 @@
-﻿var transactions;
+﻿verifyLogin();
+
+
+var transactions;
 
 const loadTransactionsData = async (id) => {
 

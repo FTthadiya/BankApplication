@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\BankWebApplication.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\EasyBankLogo3.png",
+      "PackagePath": "staticwebassets\\EasyBankLogo3.png"
+    },
+    {
       "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

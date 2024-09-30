@@ -1,4 +1,4 @@
-﻿
+﻿verifyLogin();
 const loadAccounts = async () => {
 
     try {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/l9jkiOQKhw056YmyMFIgjByVJqzH9zVt5Ox631ZS98=",
+  "Hash": "8gftQR03GYiCxEBT0E3YjeI0K7xn29r22K1gu8zv9N8=",
   "Source": "BankWebApplication",
   "BasePath": "_content/BankWebApplication",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\EasyBankLogo3.png",
+      "SourceId": "BankWebApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\",
+      "BasePath": "_content/BankWebApplication",
+      "RelativePath": "EasyBankLogo3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EasyBankLogo3.png"
     },
     {
       "Identity": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\favicon.ico",

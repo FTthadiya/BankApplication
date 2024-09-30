@@ -26,10 +26,10 @@ const loadAccounts = async () => {
             else {
                 const elements = data.map(a =>
 
-                    `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
-                    <h4>${a.accountName}</h4>
-                    <p>Account No: ${a.accountNo}</p>
-                    <p>Balance: ${a.balance}1</p>
+                    `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between align-items-center">
+                    <h4 class="my-auto">${a.accountName}</h4>
+                    <p class="my-auto">Account No: ${a.accountNo}</p>
+                    <p class="my-auto">Balance: ${a.balance}</p>
                     <button class="btn btn-warning" onclick="loadTransactions(${a.accountId})">Transactions</button>
             </div>`
 

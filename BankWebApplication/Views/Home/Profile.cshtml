@@ -6,20 +6,12 @@
 }
 
 
-<div class="text-center d-flex flex-column mt-5 justify-content-center align-items-center" onload="loadAccounts()">
+<div class="text-center d-flex flex-column mt-5 justify-content-center align-items-center">
     <h1 class="text-muted">User Profile</h1>
     <p class="text-muted">View and edit your EasyBank user profile.</p>
     <div class="w-100 d-flex justify-content-center" >
-        @* <div class="card w-50 p-5 m-4 rounded-3 mh-100 d-flex flex-column align-items-center justify-content-center">
-            <img id="profileImage" style="width: 10rem; height: 10rem; object-fit:cover;" class="mb-4 p-2"/>
-            <h4 id="profileName">Normal User</h4>
-            <p id="profileEmail">user@gmail.com</p>
-            <p id="profilePhone">0761231231</p>
-            <p id="profileAddress">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet sollicitudin placerat. Ut semper egestas tempus. Integer lacus ante, congue sit amet lacus in, iaculis mollis nisl. Etiam dapibus mi non finibus placerat.</p>
-            <button class="btn btn-warning mt-4" onclick="showEdit()">Edit</button>
-        </div> *@
         <div class="card w-50 p-5 m-4 gap-4 rounded-3 mh-100 d-flex flex-column align-items-center justify-content-center">
-            <img id="profileImage" style="width: 15rem; height: 15rem; object-fit:cover;" class="mb-4 rounded overflow-hidden"/>
+            <img id="profileImage" style="width: 15rem; height: 15rem; object-fit:cover;" class="mb-4 bg-warning p-2 rounded overflow-hidden" />
             <div class="text-lg-start w-100">
                 <label class="form-label">Username</label>
                 <input disabled id="profileName" value="Normal user" class="form-control control"/>
