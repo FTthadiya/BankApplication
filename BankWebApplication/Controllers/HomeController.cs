@@ -31,26 +31,47 @@ namespace BankWebApplication.Controllers
         [HttpGet("accounts")]
         public IActionResult Accounts()
         {
-            return View();
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return View();
+            }
+
+            return View("Welcome");
         }
 
         [HttpGet("transactions/{id}")]
         public IActionResult Transactions(int id)
         {
-            ViewBag.acctId = id;
-            return View();
+
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                ViewBag.acctId = id;
+                return View();
+            }
+
+            return View("Welcome");
         }
 
         [HttpGet("transfer")]
         public IActionResult Transfer(int id)
         {
-            return View();
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return View();
+            }
+
+            return View("Welcome");
         }
 
         [HttpGet("profile")]
         public IActionResult Profile()
         {
-            return View();
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return View();
+            }
+
+            return View("Welcome");
         }
 
 

@@ -14,6 +14,21 @@ namespace BankWebApplication.Controllers
         [HttpGet("account/{acctId}")]
         public ActionResult<IEnumerable<Transaction>> GetTransactionsByAccount(int acctId)
         {
+            RestRequest checkAcctReq = new RestRequest($"/api/accounts/{acctId}", Method.Get);
+            RestResponse checkAcctRes = client.Execute(checkAcctReq);
+            Account account = JsonConvert.DeserializeObject<Account>(checkAcctRes.Content);
+
+            if (Request.Cookies["UserId"] == null)
+            {
+                return Unauthorized();
+            }
+
+            if (int.Parse(Request.Cookies["UserId"]) != account.UserId)
+            {
+                return Unauthorized();
+
+            }
+
             RestRequest request = new RestRequest($"/api/transactions/account/{acctId}", Method.Get);
             RestResponse response = client.Execute(request);
 
@@ -56,6 +71,16 @@ namespace BankWebApplication.Controllers
                     Account fromAccount = JsonConvert.DeserializeObject<Account>(checkFromAcctRes.Content);
                     Account toAccount = JsonConvert.DeserializeObject<Account>(checkToAcctRes.Content);
 
+                    if (Request.Cookies["UserId"] == null)
+                    {
+                        return Unauthorized();
+                    }
+
+                    if (int.Parse(Request.Cookies["UserId"]) != fromAccount.UserId)
+                    {
+                        return Unauthorized();
+
+                    }
 
                     RestRequest withdrawReq = new RestRequest($"/api/transactions", Method.Post);
                     Transaction withTransaction = new Transaction();
