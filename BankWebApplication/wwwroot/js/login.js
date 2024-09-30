@@ -41,7 +41,6 @@
     };
 
     const res = await fetch(apiUrl, requestOptions);
-
     if (res.ok) {
         Toastify({
             text: "Successfully logged in",
@@ -51,6 +50,9 @@
             position: "right", // `left`, `center` or `right`
             stopOnFocus: true, // Prevents dismissing of toast on hover
             className: "success",
+            style: {
+                background: "#198754"
+            },
             onClick: function () { } // Callback after click
         }).showToast();
         await new Promise(r => setTimeout(r, 1000));

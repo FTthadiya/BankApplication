@@ -51,9 +51,13 @@ const getCurUser = async () => {
 
         const res = await fetch(apiUrl);
 
+
         if (res.ok) {
 
             const data = await res.json();
+            document.getElementById('navProfileIcon').src = data.picture;
+            document.getElementById('navProfileIcon').style.display = "Block";
+
             return data;
         }
         else {
@@ -62,7 +66,7 @@ const getCurUser = async () => {
 
             Toastify({
                 text: `${data.detail}`,
-                duration: 3000,
+                duration: 2000,
                 newWindow: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
@@ -99,11 +103,13 @@ if (userId != null) {
     document.getElementById('logoutBtn').style.display = "block";
 }
 else {
+    document.getElementById('navProfileIcon').style.display = "none";
     document.getElementById('logoutBtn').style.display = "none";
 }
 
 const logout = () => {
     document.getElementById('logoutBtn').style.display = "none";
+    document.getElementById('navProfileIcon').style.display = "none";
     document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.href = '/';
 }

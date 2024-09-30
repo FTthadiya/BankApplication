@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankWebApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+661424cd35bd95dd25578fe2c04c782b81430d55")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c6ffebccd292cfe48ff8de26e58d384bfbe737f")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankWebApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankWebApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

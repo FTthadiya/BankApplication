@@ -108,17 +108,19 @@ const transferMoney = async () => {
 
         if (res.ok) {
             Toastify({
-                text: "Transfer sucessful",
+                text: "Transfer successful",
                 duration: 3000,
                 newWindow: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
                 stopOnFocus: true, // Prevents dismissing of toast on hover
                 className: "success",
+                style: {
+                    background: "#198754"
+                },
                 onClick: function () { } // Callback after click
             }).showToast();
 
-            document.getElementById('tFromAccInput').value = "";
             document.getElementById('tToAccInput').value = "";
             document.getElementById('tAmountInput').value = "";
             document.getElementById('tDescriptionInput').value = "";
