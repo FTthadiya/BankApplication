@@ -243,29 +243,32 @@ const updateOrCreateUser = async (isCreate) => {
         var requestOptions;
 
         if (isCreate) {
-            apiUrl = '/api/admin/' + userDetails.UserId;
+            // Ensure userDetails is not used to create a user
+            document.getElementById('pCreateUserBtn').style.display = "none";
+            document.getElementById('pCreateUserLoadingBtn').style.display = "block";
+
+            // The API URL should not include userId for creating a new user
+            apiUrl = '/api/admin/user'; // Updated for creating a new user
             requestOptions = {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(newUserData)
             };
-
-        }
-        else {
-
-            if (userDetails == null || userDetails == undefined) {
+        } else {
+            // Ensure userDetails is defined before accessing properties
+            if (!userDetails) {
                 Toastify({
                     text: `No User Selected`,
                     duration: 3000,
                     newWindow: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
                     className: "btn-danger",
                     style: {
                         background: "#dc3545"
                     },
-                    onClick: function () { } // Callback after click
+                    onClick: function () { }
                 }).showToast();
                 document.getElementById('pUpdateUserBtn').style.display = "block";
                 document.getElementById('pUpdateUserLoadingBtn').style.display = "none";
@@ -274,14 +277,15 @@ const updateOrCreateUser = async (isCreate) => {
                 return;
             }
 
+            // For updating, we should use userDetails.userId
             apiUrl = '/api/admin/user';
             requestOptions = {
                 method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(data)
             };
-
         }
+
 
 
         const res = await fetch(apiUrl, requestOptions);
@@ -344,7 +348,7 @@ const updateOrCreateUser = async (isCreate) => {
 
     loadUsers();
 
-}
+} 
 
 const getPictureAsString = async () => {
     const fileInput = document.getElementById('pPictureInput');
