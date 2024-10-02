@@ -14,26 +14,33 @@ namespace BankWebApplication.Controllers
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Account>> GetAccountsByUser(int id)
         {
-            RestRequest request = new RestRequest($"/api/accounts/user/{id}", Method.Get);
-            RestResponse response = client.Execute(request);
-            IEnumerable<Account> accounts = JsonConvert.DeserializeObject<IEnumerable<Account>>(response.Content);
-
-            if (response.IsSuccessful)
+            if (int.Parse(Request.Cookies["UserId"]) != id)
             {
-                return Ok(accounts);
-            }
-            else
-            { 
-                return NotFound("No accounts found");
-
+                return Problem("Unauthorized");
             }
 
-        }
+            try
+            {
+                RestRequest request = new RestRequest($"/api/accounts/user/{id}", Method.Get);
+                RestResponse response = client.Execute(request);
+                IEnumerable<Account> accounts = JsonConvert.DeserializeObject<IEnumerable<Account>>(response.Content);
 
-        [HttpGet]
-        public ActionResult AccountsView()
-        {
-            return PartialView("AccountsView");
+                if (response.IsSuccessful)
+                {
+                    return Ok(accounts);
+                }
+                else
+                {
+                    return NotFound("No accounts found");
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing accounts in server");
+            }
         }
     }
 }

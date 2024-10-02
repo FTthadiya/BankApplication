@@ -6,11 +6,14 @@
 }
 
 <div class="container align-items-center justify-content-center d-flex flex-column h-100 mt-5 w-100">
-    <div class="card p-5 mt-5 h-100">
-        <div class="card-body d-flex flex-column gap-3 align-items-center">
-            <h2>Welcome to EasyBank</h2>
-            <p>Please login or create an account to continue.</p>
-            <button class="btn btn-warning px-5" onclick="navigateToLogin()">Login</button>
+    <div class="card mt-4 h-100 overflow-hidden fade-in">
+            <img src="/EasyBankLogo3.png" style="width: 100%; height: 300px; object-fit: cover;"/>
+        <div class="card-body d-flex flex-column gap-3 align-items-center mt-3">
+            <div class="d-flex flex-column align-items-center px-5 pt-0 pb-4 gap-3">
+                <h2>Welcome to EasyBank</h2>
+                <p>Please login to continue.</p>
+                <button class="btn btn-warning px-5" onclick="navigateToLogin()">Login</button>
+            </div>
             @* <button class="btn btn-primary" onclick="loadView('signup')">Signup</button> *@
         </div>
     </div>

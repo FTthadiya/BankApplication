@@ -39,19 +39,6 @@ namespace BankWebApplication.Controllers
                 return Problem("Problem");
             }
         }
-        // View request handlers
-        [HttpGet]
-        public ActionResult SignupView()
-        {
-            return PartialView("SignupView");
-        }
-
-        [HttpGet("error")]
-        public IActionResult ErrorView()
-        {
-            // Return the partial view as HTML
-            return PartialView("SignupErrorView");
-        }
 
     }
 }

@@ -1,0 +1,76 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section Scripts {
+    <script src="~/js/profile.js"></script>
+}
+
+
+<div class="text-center d-flex flex-column mt-5 justify-content-center align-items-center">
+    <h1 class="text-muted">User Profile</h1>
+    <p class="text-muted">View and edit your EasyBank user profile.</p>
+    <div class="w-100 d-flex justify-content-center" >
+        <div class="card w-50 p-5 m-4 gap-4 rounded-3 mh-100 d-flex flex-column align-items-center justify-content-center">
+            <img id="profileImage" style="width: 15rem; height: 15rem; object-fit:cover;" class="mb-4 bg-warning p-2 rounded overflow-hidden" />
+            <div class="text-lg-start w-100">
+                <label class="form-label">Username</label>
+                <input disabled id="profileName" value="Normal user" class="form-control control"/>
+            </div>
+            <div class="text-lg-start w-100">
+                <label class="form-label">Email</label>
+                <input disabled id="profileEmail" value="user@gmail.com" class="form-control">
+                
+            </div>
+            <div class="text-lg-start w-100">
+                <label class="form-label">Phone</label>
+                <input disabled id="profilePhone" value="071231231" class="form-control" />
+            </div>
+            <div class="text-lg-start w-100">
+                <label class="form-label">Address</label>
+                <textarea disabled id="profileAddress" class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec laoreet sollicitudin placerat. Ut semper egestas tempus. Integer lacus ante, congue sit amet lacus in, iaculis mollis nisl. Etiam dapibus mi non finibus placerat.</textarea>
+            </div>
+            <button class="btn btn-warning mt-4 w-25" onclick="showEdit()">Edit</button>
+        </div>
+        <div id="pInputsCard" class="card w-75 py-5 m-4 rounded-3 mh-100" style="display:none">
+            <form class="d-flex flex-column gap-4 align-items-center justify-content-center align-content-center">
+                <div class="text-lg-start w-75">
+                    <label for="pPictureInput" class="form-label">Profile picture</label>
+                    <input type="file" accept="image/*" class="form-control" id="pPictureInput">
+                    <small id="emailHelp" class="form-text text-muted">Leave this field empty to use existing image.</small>
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pUsernameInput" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="pUsernameInput"/>
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pEmailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="pEmailInput"/>
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pPhoneInput" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="pPhoneInput"/>
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pAddressInput" class="form-label">Address</label>
+                    <textarea class="form-control" rows="5" id="pAddressInput"> </textarea>
+                </div>
+                <div class="d-flex gap-4 w-75">
+                    <div class="text-lg-start w-100">
+                        <label for="pPasswordInput" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="pPasswordInput" />
+                    </div>
+                    <div class="text-lg-start w-100">
+                        <label for="pPasswordConfInput" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="pPasswordConfInput" />
+                    </div>
+                </div>
+                <button id="pUpdateBtn" type="button" class="btn btn-warning w-25 mt-5 align-self-center" onclick="updateUser()">Update</button>
+                <button id="pUpdateLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+    

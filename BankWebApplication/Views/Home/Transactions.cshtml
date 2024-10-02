@@ -1,30 +1,35 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
 @{
     <script src="~/js/transactions.js"></script>
     int acctId = ViewBag.acctId;
-    <script>loadData('@acctId')</script>
+    <script>loadTransactionsData('@acctId')</script>
 }
 
 
 <div>
     <div class="text-center d-flex mt-5 flex-column justify-content-center align-items-center">
         <h1 class="text-muted">Transactions</h1>
+        <p class="text-muted">View your EasyBank account transactions.</p>
         <div class="card w-75 p-2 m-5 rounded-3 mh-100">
             <div class="card p-4 d-flex flex-row m-4 gap-5 align-content-center align-items-center">
                 <div class=" d-flex text-lg-start w-25 gap-2 align-items-center text-center">
                     <label for="transactionFromDate" class="form-label">From</label>
-                    <input id="transactionFromDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+                    <input id="transactionFromDate" class="form-control" type="date" onchange="onTransactionFilterChange()"/>
                 </div>
                 <div class=" d-flex text-lg-start w-25 gap-2 align-items-center">
                     <label for="transactionToDate" class="form-label">To</label>
-                    <input id="transactionToDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+                    <input id="transactionToDate" class="form-control" type="date" onchange="onTransactionFilterChange()"/>
                 </div>
                 <button class="btn btn-warning ms-auto" onclick="resetTransactionFilter()">Reset</button>
             </div>
-            <div id="accountsList" style="overflow-y:scroll; max-height: 75vh">
-                <div class="spinner-border text-warning" role="status">
+            <div id="transactionsList" style="overflow-y:auto; max-height: 75vh">
+                <div class="mx-auto p-5 text-warning">
+                    <div class="h-100 mb-3 my-auto">Loading </div>
+                    <div class="spinner-border text-warning" role="status">
+                    </div>
                 </div>
             </div>
         </div>

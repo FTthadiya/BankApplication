@@ -13,36 +13,61 @@ namespace BankWebApplication.Controllers
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
-            RestRequest request = new RestRequest($"/api/users/{id}", Method.Get);
-            RestResponse response = client.Execute(request);
-            User user = JsonConvert.DeserializeObject<User>(response.Content);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound || user == null)
+            if (int.Parse(Request.Cookies["UserId"]) != id)
             {
-                return NotFound("User not found");
+                return Problem("Unauthorized");
             }
 
-            return Ok(user);
+            try
+            {
+                RestRequest request = new RestRequest($"/api/users/{id}", Method.Get);
+                RestResponse response = client.Execute(request);
+                User user = JsonConvert.DeserializeObject<User>(response.Content);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound || user == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                return Ok(user);
+            }
+            catch(Exception e) {
+                return Problem("Unexpected error occured");
+            
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateUser([FromBody] User user)
         {
-            RestRequest request = new RestRequest($"/api/users/{user.UserId}", Method.Put);
-            request.AddBody(user);
-            RestResponse response = client.Execute(request);
+            if (int.Parse(Request.Cookies["UserId"]) != user.UserId)
+            {
+                return Problem("Unauthorized");
+            }
 
-            if (response.IsSuccessful)
-            {
-                RestRequest getRequest = new RestRequest($"/api/users/{user.UserId}", Method.Get);
-                RestResponse getResponse = client.Execute(getRequest);
-                User newUser = JsonConvert.DeserializeObject<User>(getResponse.Content);
-                return Ok(newUser);
+            try {
+                RestRequest request = new RestRequest($"/api/users/{user.UserId}", Method.Put);
+                request.AddBody(user);
+                RestResponse response = client.Execute(request);
+
+                if (response.IsSuccessful)
+                {
+                    RestRequest getRequest = new RestRequest($"/api/users/{user.UserId}", Method.Get);
+                    RestResponse getResponse = client.Execute(getRequest);
+                    User newUser = JsonConvert.DeserializeObject<User>(getResponse.Content);
+                    return Ok(newUser);
+                }
+                else
+                {
+                    return Problem("Update process failed");
+                }
             }
-            else 
+            catch (Exception e)
             {
-                return Problem("Update process failed");
+                return Problem("Unexpected error occured");
+
             }
+            
         }
     }
 }

@@ -16,3 +16,19 @@ html {
 body {
     background: linear-gradient(to bottom right,#D4D3DD 0%, #EFEFBB 100%);
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%)
+    }
+}
+
+.fade-in {
+    animation: fadeIn 2s;
+}

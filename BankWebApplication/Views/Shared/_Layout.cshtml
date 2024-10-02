@@ -10,8 +10,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 <body>
+    <div id="messageBoxOverlay" class="position-absolute h-100 w-100 d-flex justify-content-center" style="z-index: 100; background: #111111CC; visibility:collapse;">
+        <div class="card mt-5 p-5 w-50 h-50">
+            <div class="card-title"><h3 id="messageBoxTitle">Title</h3></div>
+            <div id="messageBoxBody" class="card-body h-75 overflow-auto">
+               
+            </div>
+            <button class="btn-warning rounded-3 mt-5 w-25 align-self-end" onclick="closeMessageBox()">Close</button>
+        </div>
+    </div>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 px-3 py-2">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 px-3 py-3">
             <div class="container-fluid">
                 <a class="navbar-brand text-warning" asp-area="" asp-controller="Home" asp-action="Index">Easy<small class="text-muted">Bank</small></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -19,12 +28,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <div class="navbar-nav flex-grow-1">
+                    <div id="userNavLinks" class="navbar-nav flex-grow-1">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Accounts">Accounts</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Transfer">Transfer</a>
+                    </div>
+                    <div id="adminNavLinks" class="navbar-nav flex-grow-1" style="display: none">
+                        <a class="nav-link text-dark" href="#" onclick="showView('USERS')">Users</a>
+                        <a class="nav-link text-dark" href="#" onclick="showView('TRANSACTIONS')">Transactions</a>
+                        <a class="nav-link text-dark" href="#" onclick="showView('LOGS')">Logs</a>
                     </div>
                 </div>
             </div>
+            <img id="navProfileIcon" class="me-4 rounded-circle"style="width:40px; height:40px; object-fit: cover"/>
             <button id="logoutBtn" class="btn btn-warning" onclick="logout()">Logout</button>
         </nav>
     </header>
@@ -36,7 +53,7 @@
 
     <footer class="border-top bg-white mt-5 p-5 footer text-muted">
         <div class="container">
-            &copy; 2024 - BankWebApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - EasyBank ( Pamodya | Gimantha | Thamindu )
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
