@@ -176,16 +176,17 @@ const updateOrCreateUser = async (isCreate) => {
 
 
         var data;
+        var newUserData = {
+            UserName: username,
+            Password: password,
+            Phone: phone,
+            Email: email,
+            Address: address,
+            Picture: picture
+        };
 
         if (userDetails == null) {
-            data = {
-                UserName: username,
-                Password: password,
-                Phone: phone,
-                Email: email,
-                Address: address,
-                Picture: picture
-            };
+            data = null;
         }
         else if (picture == null) {
             data = {
@@ -198,6 +199,15 @@ const updateOrCreateUser = async (isCreate) => {
                 IsAdmin: userDetails.isAdmin,
                 IsActive: userDetails.isActive,
                 Picture: userDetails.picture
+            };
+
+            newUserData = {
+                UserName: username,
+                Password: password,
+                Phone: phone,
+                Email: email,
+                Address: address,
+                Picture: picture
             };
         }
         else {
@@ -212,6 +222,15 @@ const updateOrCreateUser = async (isCreate) => {
                 IsActive: userDetails.isActive,
                 Picture: picture
 
+            };
+
+            newUserData = {
+                UserName: username,
+                Password: password,
+                Phone: phone,
+                Email: email,
+                Address: address,
+                Picture: picture
             };
         }
 
@@ -228,11 +247,33 @@ const updateOrCreateUser = async (isCreate) => {
             requestOptions = {
                 method: 'POST',
                 headers: headers,
-                body: JSON.stringify(data)
+                body: JSON.stringify(newUserData)
             };
 
         }
         else {
+
+            if (userDetails == null || userDetails == undefined) {
+                Toastify({
+                    text: `No User Selected`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+                document.getElementById('pUpdateUserBtn').style.display = "block";
+                document.getElementById('pUpdateUserLoadingBtn').style.display = "none";
+                document.getElementById('pCreateUserBtn').style.display = "block";
+                document.getElementById('pCreateUserLoadingBtn').style.display = "none";
+                return;
+            }
+
             apiUrl = '/api/admin/user';
             requestOptions = {
                 method: 'PUT',
