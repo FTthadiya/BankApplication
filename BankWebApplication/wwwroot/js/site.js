@@ -7,6 +7,7 @@
 
 
 
+
 const getCookieByName = (name) => {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
@@ -39,8 +40,14 @@ const verifyLogin = async() => {
         window.location.href = '/login';
     }
     else {
-
+        
         await getCurUser();
+
+        const isAdmin = getCookieByName("isAdmin");
+
+        if (isAdmin == "True") {
+            window.location.href = '/admin'
+        }
 
     }
 
@@ -59,8 +66,16 @@ const getCurUser = async () => {
         if (res.ok) {
 
             const data = await res.json();
-            document.getElementById('navProfileIcon').src = data.picture;
-            document.getElementById('navProfileIcon').style.display = "Block";
+            if (data.picture != null) {
+                document.getElementById('navProfileIcon').src = data.picture;
+                document.getElementById('navProfileIcon').style.display = "Block";
+            }
+            else {
+
+                document.getElementById('navProfileIcon').src = data.picture;
+                document.getElementById('navProfileIcon').style.display = "None";
+            }
+            
 
             return data;
         }

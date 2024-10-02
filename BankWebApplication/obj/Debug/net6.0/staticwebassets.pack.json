@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\js\\accounts.js"
     },
     {
+      "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\js\\admin.js",
+      "PackagePath": "staticwebassets\\js\\admin.js"
+    },
+    {
       "Id": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\wwwroot\\js\\index.js",
       "PackagePath": "staticwebassets\\js\\index.js"
     },

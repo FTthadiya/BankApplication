@@ -80,6 +80,8 @@ const updateUser = async () => {
                 Phone: phone,
                 Email: email,
                 Address: address,
+                isAdmin: userDetails.isAdmin,
+                isActive: userDetails.isActive,
                 Picture: userDetails.picture
             };
         }
@@ -91,6 +93,8 @@ const updateUser = async () => {
                 Phone: phone,
                 Email: email,
                 Address: address,
+                isAdmin: userDetails.isAdmin,
+                isActive: userDetails.isActive,
                 Picture: picture
 
             };

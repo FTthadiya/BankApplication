@@ -28,11 +28,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <div class="navbar-nav flex-grow-1">
+                    <div id="userNavLinks" class="navbar-nav flex-grow-1">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Profile">Profile</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Accounts">Accounts</a>
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Transfer">Transfer</a>
+                    </div>
+                    <div id="adminNavLinks" class="navbar-nav flex-grow-1" style="display: none">
+                        <a class="nav-link text-dark" href="#" onclick="showView('USERS')">Users</a>
+                        <a class="nav-link text-dark" href="#" onclick="showView('TRANSACTIONS')">Transactions</a>
+                        <a class="nav-link text-dark" href="#" onclick="showView('LOGS')">Logs</a>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@ namespace BankApplicationDataAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.Accounts).ToListAsync();
         }
 
         // GET: api/Users/5

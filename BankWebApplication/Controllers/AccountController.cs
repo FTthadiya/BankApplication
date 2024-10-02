@@ -14,6 +14,11 @@ namespace BankWebApplication.Controllers
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Account>> GetAccountsByUser(int id)
         {
+            if (int.Parse(Request.Cookies["UserId"]) != id)
+            {
+                return Problem("Unauthorized");
+            }
+
             try
             {
                 RestRequest request = new RestRequest($"/api/accounts/user/{id}", Method.Get);

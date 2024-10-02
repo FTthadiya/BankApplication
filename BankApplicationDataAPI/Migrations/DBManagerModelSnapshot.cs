@@ -33,9 +33,6 @@ namespace BankApplicationDataAPI.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("REAL");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
@@ -52,7 +49,6 @@ namespace BankApplicationDataAPI.Migrations
                             AccountName = "Savings account",
                             AccountNo = 1,
                             Balance = 9998282.0,
-                            IsActive = false,
                             UserId = 1
                         },
                         new
@@ -61,8 +57,38 @@ namespace BankApplicationDataAPI.Migrations
                             AccountName = "Current account",
                             AccountNo = 2,
                             Balance = 999882.71999999997,
-                            IsActive = false,
                             UserId = 1
+                        });
+                });
+
+            modelBuilder.Entity("BankApplicationDataAPI.Models.Log", b =>
+                {
+                    b.Property<int>("LogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LogMessage")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TimeStamp")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LogId");
+
+                    b.ToTable("Logs");
+
+                    b.HasData(
+                        new
+                        {
+                            LogId = 1,
+                            Action = "Login",
+                            LogMessage = "User logged in",
+                            TimeStamp = new DateTime(2024, 10, 2, 21, 15, 18, 519, DateTimeKind.Local).AddTicks(3622)
                         });
                 });
 
@@ -101,7 +127,7 @@ namespace BankApplicationDataAPI.Migrations
                             TransactionId = 1,
                             AccountId = 1,
                             Amount = 8000.0,
-                            DateTime = new DateTime(2024, 9, 27, 16, 43, 6, 691, DateTimeKind.Utc).AddTicks(4018),
+                            DateTime = new DateTime(2024, 10, 2, 15, 45, 18, 519, DateTimeKind.Utc).AddTicks(3618),
                             Description = "Funds",
                             Type = "Widthdraw"
                         });
@@ -120,6 +146,9 @@ namespace BankApplicationDataAPI.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
@@ -148,6 +177,7 @@ namespace BankApplicationDataAPI.Migrations
                             UserId = 1,
                             Address = "Address",
                             Email = "user@gmail.com",
+                            IsActive = true,
                             IsAdmin = false,
                             Password = "123456",
                             Phone = 891231231L,
@@ -158,6 +188,7 @@ namespace BankApplicationDataAPI.Migrations
                             UserId = 2,
                             Address = "Address",
                             Email = "admin@gmail.com",
+                            IsActive = true,
                             IsAdmin = true,
                             Password = "123456",
                             Phone = 891231231L,

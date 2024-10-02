@@ -13,6 +13,11 @@ namespace BankWebApplication.Controllers
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)
         {
+            if (int.Parse(Request.Cookies["UserId"]) != id)
+            {
+                return Problem("Unauthorized");
+            }
+
             try
             {
                 RestRequest request = new RestRequest($"/api/users/{id}", Method.Get);
@@ -35,6 +40,11 @@ namespace BankWebApplication.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateUser([FromBody] User user)
         {
+            if (int.Parse(Request.Cookies["UserId"]) != user.UserId)
+            {
+                return Problem("Unauthorized");
+            }
+
             try {
                 RestRequest request = new RestRequest($"/api/users/{user.UserId}", Method.Put);
                 request.AddBody(user);

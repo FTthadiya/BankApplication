@@ -1,4 +1,5 @@
-﻿using BankApplicationDataAPI.Models;
+﻿using BankApplicationDataAPI.Data;
+using BankApplicationDataAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,9 +9,10 @@ namespace BankApplicationDataAPI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DBManager context)
         {
             _logger = logger;
+            context.resetDatabase();
         }
 
         public IActionResult Index()

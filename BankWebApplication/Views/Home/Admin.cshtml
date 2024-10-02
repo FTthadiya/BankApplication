@@ -1,0 +1,124 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section Scripts {
+    <script src="~/js/admin.js"></script>
+}
+
+
+<div id="usersView" style="display:flex" class="text-center flex-column mt-5 justify-content-center align-items-center">
+    <h1 class="text-muted">Users</h1>
+    <p class="text-muted">View and edit EasyBank user profiles.</p>
+    <div class="w-100 d-flex justify-content-center">
+        <div class="card w-50 p-3 m-4 gap-4 rounded-3 mh-100 d-flex align-items-center justify-content-lg-start">
+                <div class="d-flex w-100 px-3 gap-4 mt-4">
+                    <input id="userSearchInput" class="form-control w-75" />
+                <button id="userSearchBtn" class="btn btn-warning w-25" onclick="onUserSearchBtnClick()">Search</button>
+                </div>
+                
+                <div id="usersList" style="overflow-y:auto; max-height: 75vh" class="w-100 px-3">
+                    <div class="mx-auto p-5 text-warning">
+                        <div class="h-100 mb-3 my-auto">Loading </div>
+                        <div class="spinner-border text-warning" role="status">
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div id="pInputsCard" class="card w-50 py-5 m-4 rounded-3 mh-100">
+            <form class="d-flex flex-column gap-4 align-items-center justify-content-center align-content-center">
+                <div class="text-lg-start w-75">
+                    <label for="pPictureInput" class="form-label">Profile picture</label>
+                    <input type="file" accept="image/*" class="form-control" id="pPictureInput">
+                    <small id="emailHelp" class="form-text text-muted">Leave this field empty to use existing image.</small>
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pUsernameInput" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="pUsernameInput" />
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pEmailInput" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="pEmailInput" />
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pPhoneInput" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="pPhoneInput" />
+                </div>
+                <div class="text-lg-start w-75">
+                    <label for="pAddressInput" class="form-label">Address</label>
+                    <textarea class="form-control" rows="5" id="pAddressInput"> </textarea>
+                </div>
+                <div class="d-flex gap-4 w-75">
+                    <div class="text-lg-start w-100">
+                        <label for="pPasswordInput" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="pPasswordInput" />
+                    </div>
+                    <div class="text-lg-start w-100">
+                        <label for="pPasswordConfInput" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="pPasswordConfInput" />
+                    </div>
+                </div>
+                <div class="d-flex gap-4 w-75">
+                    <button id="pUpdateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="updateOrCreateUser()">Update</button>
+                    <button id="pUpdateUserLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button><button id="pCreateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="updateOrCreateUser(true)">Create as new user</button>
+                    <button id="pCreateUserLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="transactionsView" style="display:none" class="text-center mt-5 flex-column justify-content-center align-items-center">
+    <h1 class="text-muted">Transactions</h1>
+    <p class="text-muted">Search and view all EasyBank transactions.</p>
+    <div class="card w-75 p-2 m-5 rounded-3 mh-100">
+        <div class="card p-4 d-flex flex-row m-4 gap-5 align-content-center align-items-center">
+            <div class=" d-flex flex-column text-lg-start w-25 gap-2">
+                <label for="transactionFromDate" class="form-label">From</label>
+                <input id="transactionFromDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+            </div>
+            <div class=" d-flex flex-column text-lg-start w-25 gap-2 ">
+                <label for="transactionToDate" class="form-label">To</label>
+                <input id="transactionToDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+            </div>
+            <div class=" d-flex flex-column  text-lg-start w-25 gap-2">
+                <label for="transactionSearchInput" class="form-label">Search</label>
+                <input id="transactionSearchInput" class="form-control" type="text" onchange="onTransactionFilterChange()" />
+            </div>
+            <button class="btn btn-warning ms-auto align-self-end" onclick="searchTransactions()">Search</button>
+            <button class="btn btn-warning ms-auto align-self-end" onclick="resetTransactionFilter()">Reset</button>
+        </div>
+        <div id="transactionsList" style="overflow-y:auto; max-height: 75vh">
+            <div class="mx-auto p-5 text-warning">
+                <div class="h-100 mb-3 my-auto">Loading </div>
+                <div class="spinner-border text-warning" role="status">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="logsView" style="display:none" class="text-center flex-column mt-5 justify-content-center align-items-center" onload="loadAccounts()">
+    <h1 class="text-muted">Logs</h1>
+    <p class="text-muted">View EasyBank system logs.</p>
+    <div class="card w-75 p-2 m-5 rounded-3 mh-100">
+        <div id="logsList" style="overflow-y:auto; max-height: 75vh">
+            <div class="mx-auto p-5 text-warning">
+                <div class="h-100 mb-3 my-auto">Loading </div>
+                <div class="spinner-border text-warning" role="status">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

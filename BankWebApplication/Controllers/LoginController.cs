@@ -28,9 +28,15 @@ namespace BankWebApplication.Controllers
                 }
                 else
                 {
+                    if (existingUser.IsActive == false)
+                    {
+                        return Problem("User account inactive");
+                    }
+
                     if (existingUser.Password.Equals(user.Password))
                     {
                         Response.Cookies.Append("userId", existingUser.UserId.ToString());
+                        Response.Cookies.Append("isAdmin", existingUser.IsAdmin.ToString());
                         return Ok("Authenticated");
                     }
                     else 

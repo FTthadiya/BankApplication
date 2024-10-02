@@ -13,8 +13,6 @@ namespace BankApplicationDataAPI.Models
 
         public double Balance { get; set; }
 
-        public bool IsActive { get; set; }
-
         public int UserId { get; set; }
 
         [JsonIgnore]

@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BankApplicationDataAPI\BankApplicationDataAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="Views\Home\Login.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

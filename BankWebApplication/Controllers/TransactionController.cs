@@ -53,7 +53,7 @@ namespace BankWebApplication.Controllers
 
                 if (fromAcct == toAcct)
                 {
-                    return BadRequest("Can not transfer to same account");
+                    return Problem("Can not transfer to same account");
                 }
 
                 RestRequest checkFromAcctReq = new RestRequest($"/api/accounts/acctNo/{fromAcct}", Method.Get);
@@ -64,7 +64,7 @@ namespace BankWebApplication.Controllers
 
                 if (!checkFromAcctRes.IsSuccessful || !checkToAcctRes.IsSuccessful)
                 {
-                    return NotFound("Account not found");
+                    return Problem("Account not found");
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace BankWebApplication.Controllers
 
                     if (!withdrawRes.IsSuccessful)
                     {
-                        return Problem("Transaction 1 failed: " + withdrawRes.StatusDescription);
+                        return Problem("Transaction failed: " + withdrawRes.StatusDescription);
                     }
 
                     RestRequest depositReq = new RestRequest($"/api/transactions", Method.Post);

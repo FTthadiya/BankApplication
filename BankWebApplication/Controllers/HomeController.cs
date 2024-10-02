@@ -12,7 +12,7 @@ namespace BankWebApplication.Controllers
         {
             _logger = logger;
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             if (Request.Cookies.ContainsKey("UserID"))
@@ -73,6 +73,21 @@ namespace BankWebApplication.Controllers
 
             return View("Welcome");
         }
+
+        [HttpGet("admin")]
+        public IActionResult Admin()
+        {
+            if (Request.Cookies.ContainsKey("isAdmin"))
+            {
+                if (Request.Cookies["isAdmin"].Equals("True"))
+                {
+                    return View();
+                }
+            }
+
+            return View("Welcome");
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -8,6 +8,7 @@ namespace BankApplicationDataAPI.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Account> Accounts { get; set; } 
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,6 +20,7 @@ namespace BankApplicationDataAPI.Data
             List<User> users = new List<User>();
             List<Account> accounts = new List<Account>();
             List<Transaction> transactions = new List<Transaction>();
+            List<Log> logs = new List<Log>();
 
             User user1 = new User();
             user1.UserId = 1;
@@ -64,10 +66,22 @@ namespace BankApplicationDataAPI.Data
             transaction1.AccountId = 1;
             transactions.Add(transaction1);
 
+            Log log1 = new Log();
+            log1.LogId = 1;
+            log1.Action = "Login";
+            log1.LogMessage = "User logged in";
+            logs.Add(log1);
+
             modelBuilder.Entity<User>().HasData(users);
             modelBuilder.Entity<Account>().HasData(accounts);
             modelBuilder.Entity<Transaction>().HasData(transactions);
+            modelBuilder.Entity<Log>().HasData(logs);
 
         }
+
+        public void resetDatabase() {
+            Console.WriteLine("Resetting database");
+        }
+
     }
 }
