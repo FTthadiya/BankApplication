@@ -30,6 +30,7 @@ namespace BankApplicationDataAPI.Data
             user1.Address = "Address";
             user1.Phone = 0891231231;
             user1.IsAdmin = false;
+            user1.IsActive = true;
             users.Add(user1);
 
             User user2 = new User();
@@ -40,7 +41,8 @@ namespace BankApplicationDataAPI.Data
             user2.Address = "Address";
             user2.Phone = 0891231231;
             user2.IsAdmin = true;
-            users.Add(user2);
+			user2.IsActive = false;
+			users.Add(user2);
 
             Account account1 = new Account();
             account1.AccountId = 1;

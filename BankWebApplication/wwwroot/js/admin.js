@@ -379,9 +379,38 @@ const setPictureFromString = (base64String) => {
     imgElement.src = base64String;
 }
 
-const toggleAccount = () => {
-    loadUsers();
+const toggleAccount = async (userId) => {
+    try {
+        const res = await fetch(`/api/admin/toggle/${userId}`, {
+            method: 'PUT'
+        });
+        if (res.ok) {
+            // Reload users after successful toggle
+            loadUsers();
+        } else {
+            const data = await res.json();
+            // Show an error message if the request failed
+            Toastify({
+                text: data.detail,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "btn-danger",
+                style: { background: "#dc3545" }
+            }).showToast();
+        }
+    } catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: { background: "#dc3545" }
+        }).showToast();
+    }
 };
+
 
 /////////////////////// Transactions //////////////////////////////////////
 var transactions;
