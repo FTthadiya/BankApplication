@@ -243,29 +243,32 @@ const updateOrCreateUser = async (isCreate) => {
         var requestOptions;
 
         if (isCreate) {
-            apiUrl = '/api/admin/' + userDetails.UserId;
+            // Ensure userDetails is not used to create a user
+            document.getElementById('pCreateUserBtn').style.display = "none";
+            document.getElementById('pCreateUserLoadingBtn').style.display = "block";
+
+            // The API URL should not include userId for creating a new user
+            apiUrl = '/api/admin/user'; // Updated for creating a new user
             requestOptions = {
                 method: 'POST',
                 headers: headers,
                 body: JSON.stringify(newUserData)
             };
-
-        }
-        else {
-
-            if (userDetails == null || userDetails == undefined) {
+        } else {
+            // Ensure userDetails is defined before accessing properties
+            if (!userDetails) {
                 Toastify({
                     text: `No User Selected`,
                     duration: 3000,
                     newWindow: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
                     className: "btn-danger",
                     style: {
                         background: "#dc3545"
                     },
-                    onClick: function () { } // Callback after click
+                    onClick: function () { }
                 }).showToast();
                 document.getElementById('pUpdateUserBtn').style.display = "block";
                 document.getElementById('pUpdateUserLoadingBtn').style.display = "none";
@@ -274,14 +277,15 @@ const updateOrCreateUser = async (isCreate) => {
                 return;
             }
 
+            // For updating, we should use userDetails.userId
             apiUrl = '/api/admin/user';
             requestOptions = {
                 method: 'PUT',
                 headers: headers,
                 body: JSON.stringify(data)
             };
-
         }
+
 
 
         const res = await fetch(apiUrl, requestOptions);
@@ -344,7 +348,7 @@ const updateOrCreateUser = async (isCreate) => {
 
     loadUsers();
 
-}
+} 
 
 const getPictureAsString = async () => {
     const fileInput = document.getElementById('pPictureInput');
@@ -375,9 +379,38 @@ const setPictureFromString = (base64String) => {
     imgElement.src = base64String;
 }
 
-const toggleAccount = () => {
-    loadUsers();
+const toggleAccount = async (userId) => {
+    try {
+        const res = await fetch(`/api/admin/toggle/${userId}`, {
+            method: 'PUT'
+        });
+        if (res.ok) {
+            // Reload users after successful toggle
+            loadUsers();
+        } else {
+            const data = await res.json();
+            // Show an error message if the request failed
+            Toastify({
+                text: data.detail,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "btn-danger",
+                style: { background: "#dc3545" }
+            }).showToast();
+        }
+    } catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: { background: "#dc3545" }
+        }).showToast();
+    }
 };
+
 
 /////////////////////// Transactions //////////////////////////////////////
 var transactions;
@@ -485,9 +518,87 @@ const resetTransactionFilter = () => {
     document.getElementById("transactionToDate").value = "";
 }
 
-const searchTransactions = () => {
+const searchTransactions = async () => {
+    // Get the transaction ID from the input field
+    const transactionIdInput = document.getElementById('transactionSearchInput').value;
 
+    // Check if the input is valid
+    if (!transactionIdInput) {
+        Toastify({
+            text: "Please enter a transaction ID.",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            }
+        }).showToast();
+        return;
+    }
+
+    const transactionId = parseInt(transactionIdInput);
+
+    // Make the API call
+    try {
+        const res = await fetch(`/api/admin/transactions/${transactionId}`);
+
+        if (!res.ok) {
+            const errorData = await res.json();
+            Toastify({
+                text: errorData.detail || "Transaction not found.",
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                }
+            }).showToast();
+            return;
+        }
+
+        const transaction = await res.json();
+
+    
+        // Display the transaction details in the transactions list
+        const transactionsList = document.getElementById('transactionsList');
+
+        // Check if the transaction has valid data
+        if (!transaction || Object.keys(transaction).length === 0) {
+            transactionsList.innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No transaction details found</div>`;
+        } else {
+           
+
+            const transactionHTML = `
+                <div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
+                    <p>${new Date(transaction.dateTime).toLocaleString()}</p>                    
+                    <p>${transaction.type}</p>
+                    <p>Amount: ${transaction.amount}</p>
+                    <button class="btn btn-warning" onclick="showMessageBox({title: 'Transaction - ${transaction.amount} ${transaction.type}', desc: '${transaction.description}' })">Description</button>
+                </div>
+            `;
+            transactionsList.innerHTML = transactionHTML;
+
+        }
+
+
+    } catch (error) {
+        Toastify({
+            text: `Error fetching transaction: ${error.message}`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            }
+        }).showToast();
+    }
 };
+
+
+
 
 ////////////////////////////////////// Logs //////////////////////////////////////////
 

@@ -94,6 +94,18 @@
                 <label for="transactionSearchInput" class="form-label">Search</label>
                 <input id="transactionSearchInput" class="form-control" type="text" onchange="onTransactionFilterChange()" />
             </div>
+
+            <!-- Dropdown for sorting -->
+            <div class="d-flex flex-column text-lg-start w-25 gap-2">
+                <label for="transactionSort" class="form-label">Sort by</label>
+                <select id="transactionSort" class="form-select" onchange="transactionSort()">
+                    <option value="">Select</option>
+                    <option value="asc">Amount: Low to High</option>
+                    <option value="desc">Amount: High to Low</option>
+                </select>
+            </div>
+
+
             <button class="btn btn-warning ms-auto align-self-end" onclick="searchTransactions()">Search</button>
             <button class="btn btn-warning ms-auto align-self-end" onclick="resetTransactionFilter()">Reset</button>
         </div>
@@ -106,6 +118,7 @@
         </div>
     </div>
 </div>
+
 
 <div id="logsView" style="display:none" class="text-center flex-column mt-5 justify-content-center align-items-center" onload="loadAccounts()">
     <h1 class="text-muted">Logs</h1>
