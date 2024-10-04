@@ -261,10 +261,6 @@ namespace BankApplicationDataAPI.Controllers
 		}
 
 
-
-
-
-
 		[HttpGet("transactions")]
         public IActionResult SearchTransactions([FromQuery] string filter, [FromQuery] string sortOrder)
         {
@@ -283,7 +279,81 @@ namespace BankApplicationDataAPI.Controllers
             return Ok(transactions);
         }
 
-        [HttpGet("logs")]
+		[HttpGet("transactions/{transactionId}")]
+		public IActionResult SearchTransactionById([FromRoute] int transactionId)
+		{
+			try
+			{
+				client = new RestClient(DataService);
+				RestRequest request = new RestRequest("api/transactions/{transactionId}", Method.Get);
+				request.AddUrlSegment("transactionId", transactionId);
+				RestResponse response = client.Execute(request);
+
+				if (!response.IsSuccessful)
+				{
+					return NotFound("Transaction not found.");
+				}
+
+				Transaction transaction = JsonConvert.DeserializeObject<Transaction>(response.Content);
+				if (transaction == null)
+				{
+					return NotFound("Transaction not found.");
+				}
+
+				return Ok(transaction);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+
+		[HttpGet("transactions/sorted")]
+		public IActionResult GetSortedTransactions([FromQuery] string filter, [FromQuery] string sortOrder)
+		{
+			try
+			{
+				// Create a RestClient instance
+				client = new RestClient(DataService);
+
+				// Fetch all transactions from the API
+				RestRequest request = new RestRequest("api/transactions", Method.Get);
+				RestResponse response = client.Execute(request);
+
+				// Check if the response was successful
+				if (!response.IsSuccessful)
+				{
+					return NotFound("Failed to retrieve transactions.");
+				}
+
+				// Deserialize the transactions into an IEnumerable<Transaction>
+				IEnumerable<Transaction> transactions = JsonConvert.DeserializeObject<IEnumerable<Transaction>>(response.Content);
+
+				// Filter transactions if needed
+				if (!string.IsNullOrEmpty(filter))
+				{
+					transactions = transactions.Where(t => t.Type.Equals(filter, StringComparison.OrdinalIgnoreCase));
+				}
+
+				// Sort transactions based on sortOrder (either 'Deposit' or 'Withdraw')
+				if (!string.IsNullOrEmpty(sortOrder))
+				{
+					transactions = sortOrder.Equals("Deposit", StringComparison.OrdinalIgnoreCase)
+						? transactions.Where(t => t.Type.Equals("Deposit", StringComparison.OrdinalIgnoreCase))
+						: transactions.Where(t => t.Type.Equals("Withdraw", StringComparison.OrdinalIgnoreCase));
+				}
+
+				return Ok(transactions);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest($"An error occurred: {ex.Message}");
+			}
+		}
+
+
+
+		[HttpGet("logs")]
         public IActionResult GetAllLogs()
         {
             client = new RestClient(DataService);

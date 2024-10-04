@@ -518,9 +518,87 @@ const resetTransactionFilter = () => {
     document.getElementById("transactionToDate").value = "";
 }
 
-const searchTransactions = () => {
+const searchTransactions = async () => {
+    // Get the transaction ID from the input field
+    const transactionIdInput = document.getElementById('transactionSearchInput').value;
 
+    // Check if the input is valid
+    if (!transactionIdInput) {
+        Toastify({
+            text: "Please enter a transaction ID.",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            }
+        }).showToast();
+        return;
+    }
+
+    const transactionId = parseInt(transactionIdInput);
+
+    // Make the API call
+    try {
+        const res = await fetch(`/api/admin/transactions/${transactionId}`);
+
+        if (!res.ok) {
+            const errorData = await res.json();
+            Toastify({
+                text: errorData.detail || "Transaction not found.",
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                }
+            }).showToast();
+            return;
+        }
+
+        const transaction = await res.json();
+
+    
+        // Display the transaction details in the transactions list
+        const transactionsList = document.getElementById('transactionsList');
+
+        // Check if the transaction has valid data
+        if (!transaction || Object.keys(transaction).length === 0) {
+            transactionsList.innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No transaction details found</div>`;
+        } else {
+           
+
+            const transactionHTML = `
+                <div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
+                    <p>${new Date(transaction.dateTime).toLocaleString()}</p>                    
+                    <p>${transaction.type}</p>
+                    <p>Amount: ${transaction.amount}</p>
+                    <button class="btn btn-warning" onclick="showMessageBox({title: 'Transaction - ${transaction.amount} ${transaction.type}', desc: '${transaction.description}' })">Description</button>
+                </div>
+            `;
+            transactionsList.innerHTML = transactionHTML;
+
+        }
+
+
+    } catch (error) {
+        Toastify({
+            text: `Error fetching transaction: ${error.message}`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            }
+        }).showToast();
+    }
 };
+
+
+
 
 ////////////////////////////////////// Logs //////////////////////////////////////////
 
