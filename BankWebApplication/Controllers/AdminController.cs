@@ -306,54 +306,40 @@ namespace BankApplicationDataAPI.Controllers
 			{
 				return BadRequest(ex.Message);
 			}
-		}
+        }
 
-		[HttpGet("transactions/sorted")]
-		public IActionResult GetSortedTransactions([FromQuery] string filter, [FromQuery] string sortOrder)
-		{
-			try
-			{
-				// Create a RestClient instance
-				client = new RestClient(DataService);
+		// transactions/sortByAmount?sortOrder = asc
+		// transactions/sortByAmount?sortOrder = desc
+        [HttpGet("transactions/sortByAmount")]
+        public IActionResult SortTransactionsByAmount([FromQuery] string sortOrder)
+        {
+            client = new RestClient(DataService);
+            RestRequest request = new RestRequest("api/transactions", Method.Get);
+            RestResponse response = client.Execute(request);
 
-				// Fetch all transactions from the API
-				RestRequest request = new RestRequest("api/transactions", Method.Get);
-				RestResponse response = client.Execute(request);
+            if (!response.IsSuccessful)
+            {
+                return NotFound("Failed to retrieve transactions.");
+            }
 
-				// Check if the response was successful
-				if (!response.IsSuccessful)
-				{
-					return NotFound("Failed to retrieve transactions.");
-				}
+            if (string.IsNullOrEmpty(response.Content))
+            {
+                return Ok(new List<Transaction>()); // Return an empty list if no content is returned
+            }
 
-				// Deserialize the transactions into an IEnumerable<Transaction>
-				IEnumerable<Transaction> transactions = JsonConvert.DeserializeObject<IEnumerable<Transaction>>(response.Content);
+            IEnumerable<Transaction> transactions = JsonConvert.DeserializeObject<IEnumerable<Transaction>>(response.Content);
 
-				// Filter transactions if needed
-				if (!string.IsNullOrEmpty(filter))
-				{
-					transactions = transactions.Where(t => t.Type.Equals(filter, StringComparison.OrdinalIgnoreCase));
-				}
+            // Sort transactions based on the sortOrder parameter
+            transactions = string.IsNullOrEmpty(sortOrder) || sortOrder.ToLower() != "desc"
+                ? transactions.OrderBy(t => t.Amount)
+                : transactions.OrderByDescending(t => t.Amount);
 
-				// Sort transactions based on sortOrder (either 'Deposit' or 'Withdraw')
-				if (!string.IsNullOrEmpty(sortOrder))
-				{
-					transactions = sortOrder.Equals("Deposit", StringComparison.OrdinalIgnoreCase)
-						? transactions.Where(t => t.Type.Equals("Deposit", StringComparison.OrdinalIgnoreCase))
-						: transactions.Where(t => t.Type.Equals("Withdraw", StringComparison.OrdinalIgnoreCase));
-				}
-
-				return Ok(transactions);
-			}
-			catch (Exception ex)
-			{
-				return BadRequest($"An error occurred: {ex.Message}");
-			}
-		}
+            return Ok(transactions);
+        }
 
 
 
-		[HttpGet("logs")]
+        [HttpGet("logs")]
         public IActionResult GetAllLogs()
         {
             client = new RestClient(DataService);

@@ -98,12 +98,13 @@
             <!-- Dropdown for sorting -->
             <div class="d-flex flex-column text-lg-start w-25 gap-2">
                 <label for="transactionSort" class="form-label">Sort by</label>
-                <select id="transactionSort" class="form-select" onchange="onTransactionFilterChange()">
+                <select id="transactionSort" class="form-select" onchange="transactionSort()">
                     <option value="">Select</option>
-                    <option value="Deposit">Deposit</option>
-                    <option value="Withdraw">Withdraw</option>
+                    <option value="asc">Amount: Low to High</option>
+                    <option value="desc">Amount: High to Low</option>
                 </select>
             </div>
+
 
             <button class="btn btn-warning ms-auto align-self-end" onclick="searchTransactions()">Search</button>
             <button class="btn btn-warning ms-auto align-self-end" onclick="resetTransactionFilter()">Reset</button>
