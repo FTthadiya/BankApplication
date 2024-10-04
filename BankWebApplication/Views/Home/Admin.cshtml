@@ -97,17 +97,19 @@
 
             <!-- Dropdown for sorting -->
             <div class="d-flex flex-column text-lg-start w-25 gap-2">
-                <label for="transactionSort" class="form-label">Sort by</label>
-                <select id="transactionSort" class="form-select" onchange="transactionSort()">
+                <label for="transactionSort" class="form-label">Sort by amount</label>
+                <select id="transactionSort" class="form-select" onchange="onTransactionFilterChange()">
                     <option value="">Select</option>
                     <option value="asc">Amount: Low to High</option>
                     <option value="desc">Amount: High to Low</option>
                 </select>
             </div>
 
-
-            <button class="btn btn-warning ms-auto align-self-end" onclick="searchTransactions()">Search</button>
-            <button class="btn btn-warning ms-auto align-self-end" onclick="resetTransactionFilter()">Reset</button>
+            <div class="d-flex flex-column gap-2">
+                <button class="btn btn-warning mx-auto " onclick="searchTransactions()">Search</button>
+                <button class="btn btn-warning mx-auto" onclick="resetTransactionFilter()">Reset</button>
+            </div>
+            
         </div>
         <div id="transactionsList" style="overflow-y:auto; max-height: 75vh">
             <div class="mx-auto p-5 text-warning">
@@ -132,6 +134,42 @@
             </div>
         </div>
     </div>
+</div>
 
+<div id="accountsView" style="display:none" class="text-center flex-column mt-5 justify-content-center align-items-center">
+    <h1 class="text-muted">Accounts</h1>
+    <p class="text-muted">View and open new EasyBank accounts.</p>
+    <div class="w-100 d-flex justify-content-center">
+        <div class="card w-50 p-2 m-4 rounded-3 mh-100">
+            <div id="accountsList" style="overflow-y:auto; max-height: 75vh">
+                <div class="mx-auto p-5 text-warning">
+                    <div class="h-100 mb-3 my-auto">Loading </div>
+                    <div class="spinner-border text-warning" role="status">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="aInputsCard" class="card w-50 py-5 m-4 rounded-3 h-50">
+            <form class="d-flex flex-column gap-4 align-items-center justify-content-center align-content-center">
 
+                <div class="text-lg-start w-75">
+                    <label for="aUserIdInput" class="form-label">User ID</label>
+                    <input type="tel" class="form-control" id="aUserIdInput" />
+                </div>
+
+                <div class="text-lg-start w-75">
+                    <label for="aAcctNameInput" class="form-label">Account name</label>
+                    <input type="text" class="form-control" id="aAcctNameInput" />
+                </div>
+           
+                <div class="d-flex gap-4 w-75 justify-content-center">
+                    <button id="aCreateAccountBtn" type="button" class="btn btn-warning w-50 mt-5" onclick="createAccount()">Create Account</button>
+                    <button id="aCreateAccountLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

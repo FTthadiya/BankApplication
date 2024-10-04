@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e/Pf+kHpI/M=",
+  "dgSpecHash": "XBsrTtyfDPE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankWebApplication\\BankWebApplication.csproj",
+  "projectFilePath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\giman\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\giman\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

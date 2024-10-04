@@ -94,6 +94,36 @@ namespace BankApplicationDataAPI.Controllers
             }
         }
 
+        [HttpDelete("user/{id}")]
+        public IActionResult DeleteUser(int id)
+        {
+            try
+            {
+                client = new RestClient(DataService);
+                RestRequest request = new RestRequest($"api/users/{id}", Method.Delete);
+                RestResponse response = client.Execute(request);
+
+                if (!response.IsSuccessful)
+                {
+                    return BadRequest("Could not delete user.");
+                }
+
+                Log log = new Log
+                {
+                    TimeStamp = DateTime.Now,
+                    Action = "Delete",
+                    LogMessage = "User account deleted: " + id
+                };
+                CreateLog(log);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         [HttpPut]
         public IActionResult ResetPassword([FromQuery] int userId, [FromBody] string newPassword)
         {
@@ -374,5 +404,93 @@ namespace BankApplicationDataAPI.Controllers
             User user = JsonConvert.DeserializeObject<User>(response.Content);
             return Ok(user);
         }
+
+        [HttpGet("account")]
+        public ActionResult<IEnumerable<Account>> GetAccounts()
+        {
+
+            try
+            {
+                client = new RestClient(DataService);
+                RestRequest request = new RestRequest($"/api/accounts/", Method.Get);
+                RestResponse response = client.Execute(request);
+                IEnumerable<Account> accounts = JsonConvert.DeserializeObject<IEnumerable<Account>>(response.Content);
+
+                if (response.IsSuccessful)
+                {
+                    return Ok(accounts);
+                }
+                else
+                {
+                    return NotFound("No accounts found");
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing accounts in server");
+            }
+        }
+
+        [HttpPost("account")]
+        public IActionResult CreateAccount([FromBody] Account account)
+        {
+            try
+            {
+                int acctNo = 0;
+                bool generate = true;
+
+                while (generate)
+                {
+                    Random random = new Random();
+                    acctNo = random.Next();
+
+                    client = new RestClient(DataService);
+                    // Check if email already exists
+                    RestRequest checkRequest = new RestRequest("api/accounts/acctNo/"+acctNo, Method.Get);
+                    RestResponse checkResponse = client.Execute(checkRequest);
+                    Console.WriteLine(acctNo);
+                    if (checkResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    { 
+                        generate = false;
+                        break;
+                    }
+                    
+                }
+
+                if (acctNo == 0)
+                {
+                    return Problem("An error occured while generating ID");
+                }
+
+                account.AccountNo = acctNo;
+
+                RestRequest request = new RestRequest("api/accounts", Method.Post);
+                request.AddJsonBody(account);
+                RestResponse response = client.Execute(request);
+
+                if (!response.IsSuccessful)
+                {
+                    return BadRequest("Could not create user.");
+                }
+
+                Log log = new Log
+                {
+                    TimeStamp = DateTime.Now,
+                    Action = "Create",
+                    LogMessage = "Bank account created: " + acctNo
+                };
+                CreateLog(log);
+
+                return Created("Account created", account);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
+
 }

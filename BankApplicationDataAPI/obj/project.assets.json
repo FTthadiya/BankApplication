@@ -10972,11 +10972,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
+      "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
       "projectName": "BankApplicationDataAPI",
-      "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
+      "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
       "packagesPath": "C:\\Users\\giman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\BankApplication\\BankApplicationDataAPI\\obj\\",
+      "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\giman\\AppData\\Roaming\\NuGet\\NuGet.Config",

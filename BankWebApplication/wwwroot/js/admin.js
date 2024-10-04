@@ -4,6 +4,7 @@ document.getElementById('adminNavLinks').style.display = "Flex";
 const showView = (view) => {
     if (view == "USERS") {
         document.getElementById('usersView').style.display = "Flex";
+        document.getElementById('accountsView').style.display = "None";
         document.getElementById('logsView').style.display = "None";
         document.getElementById('transactionsView').style.display = "None";
 
@@ -11,12 +12,20 @@ const showView = (view) => {
     else if (view == "TRANSACTIONS") {
         document.getElementById('usersView').style.display = "None";
         document.getElementById('logsView').style.display = "None";
+        document.getElementById('accountsView').style.display = "None";
         document.getElementById('transactionsView').style.display = "Flex";
     }
     else if (view == "LOGS") {
         document.getElementById('usersView').style.display = "None";
         document.getElementById('transactionsView').style.display = "None";
+        document.getElementById('accountsView').style.display = "None";
         document.getElementById('logsView').style.display = "Flex";
+    }
+    else if (view == "ACCOUNTS") {
+        document.getElementById('usersView').style.display = "None";
+        document.getElementById('transactionsView').style.display = "None";
+        document.getElementById('logsView').style.display = "None";
+        document.getElementById('accountsView').style.display = "Block";
     }
 }
 
@@ -56,11 +65,11 @@ const loadUsers = async (term) => {
                 const elements = data.map(u =>
 
                     `<div class="card d-flex flex-row gap-4 mt-4 p-3 w-100 justify-content-between align-items-center">
-                    <h4 class="my-auto">${u.userName}</h4>
-                    <p class="my-auto">Id: ${u.userId}</p>
-                    <p class="my-auto">No of accounts: ${u.accounts.length}</p>
-                    <button class="btn btn-warning" onclick="toggleAccount(${u.userId})">${u.isActive ? "Deactivate" : "Activate"}</button>
-                    <button class="btn btn-warning" onclick="openUserEdit(${u.userId})">Edit</button>
+                    <h4 class="my-auto w-25">${u.userName}</h4>
+                    <p class="my-auto w-25">Id: ${u.userId}</p>
+                    <button class="btn btn-warning w-25" onclick="openUserEdit(${u.userId})">Edit</button>
+                    <button class="btn btn-warning w-25" onclick="toggleAccount(${u.userId})">${u.isActive ? "Deactivate" : "Activate"}</button>
+                    <button class="btn btn-danger w-25" onclick="deleteAccount(${u.userId})">Delete</button>
             </div>`
 
                 ).join('')
@@ -171,9 +180,6 @@ const updateOrCreateUser = async (isCreate) => {
             document.getElementById('pUpdateUserBtn').style.display = "none";
             document.getElementById('pUpdateUserLoadingBtn').style.display = "block";
         }
-
-        
-
 
         var data;
         var newUserData = {
@@ -411,9 +417,56 @@ const toggleAccount = async (userId) => {
     }
 };
 
+const deleteAccount = async (userId) => {
+    try {
+        const res = await fetch(`/api/admin/user/${userId}`, {
+            method: 'DELETE'
+        });
+        if (res.ok) {
+            // Reload users after successful toggle
+            loadUsers();
+            Toastify({
+                text: `User Deleted`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "success",
+                style: {
+                    background: "#198754"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        } else {
+            const data = await res.json();
+            // Show an error message if the request failed
+            Toastify({
+                text: data.detail,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                className: "btn-danger",
+                style: { background: "#dc3545" }
+            }).showToast();
+        }
+    } catch (error) {
+
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            className: "btn-danger",
+            style: { background: "#dc3545" }
+        }).showToast();
+    }
+};
+
 
 /////////////////////// Transactions //////////////////////////////////////
 var transactions;
+var filteredTransactions;
 
 const loadTransactionsData = async () => {
     try {
@@ -428,6 +481,7 @@ const loadTransactionsData = async () => {
             const data = await res.json();
 
             transactions = data;
+            filteredTransactions = data;
 
             console.log(data);
             renderTransactions(data);
@@ -494,23 +548,78 @@ const renderTransactions = (data) => {
 
 }
 
-const onTransactionFilterChange = () => {
+const onTransactionFilterChange = async () => {
     const fromDate = document.getElementById("transactionFromDate").value;
     const toDate = document.getElementById("transactionToDate").value;
+    const sort = document.getElementById("transactionSort").value;
+    
+
+    if (sort == "asc" || sort == "desc") {
+        try {
+
+            const apiUrl = '/api/admin/transactions/sortByAmount?sortOrder='+sort;
+
+            const res = await fetch(apiUrl);
+
+            if (res.ok) {
+                const data = await res.json()
+
+                filteredTransactions = data;
+
+                renderTransactions(data);
+            }
+            else {
+
+                const data = await res.json();
+
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+
+        }
+        catch (error) {
+            Toastify({
+                text: `${error}`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+    }
 
     if (fromDate != "" && toDate != "") {
         const from = new Date(fromDate);
         const to = new Date(toDate);
 
-        const filteredTransactions = transactions.filter(transaction => {
+        filteredTransactions = transactions.filter(transaction => {
             const transactionDate = new Date(transaction.dateTime);
             return transactionDate >= from && transactionDate <= to;
         });
 
-        renderTransactions(filteredTransactions);
     }
 
+    renderTransactions(filteredTransactions);
 };
+
 
 const resetTransactionFilter = () => {
     renderTransactions(transactions);
@@ -606,7 +715,6 @@ const loadLogs = async () => {
 
     try {
 
-
         const apiUrl = '/api/admin/logs'
 
         const res = await fetch(apiUrl);
@@ -669,8 +777,171 @@ const loadLogs = async () => {
             onClick: function () { } // Callback after click
         }).showToast();
     }
+}
+
+loadLogs();
+
+///////////////////////////// Account /////////////////////////////////////////
+
+
+const loadAccounts = async () => {
+
+    try {
+
+
+        const apiUrl = '/api/admin/account/';
+
+        const res = await fetch(apiUrl);
+
+        if (res.ok) {
+
+            const data = await res.json();
+
+
+            if (data.length == 0) {
+                document.getElementById("accountsList").innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No accounts found</div>`;
+
+            }
+            else {
+                const elements = data.map(a =>
+
+                    `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between align-items-center">
+                    <h4 class="my-auto w-25">${a.accountName}</h4>
+                    <p class="my-auto w-25">Account No: ${a.accountNo}</p>
+                    <p class="my-auto w-25">Owner: ${a.userId}</p>
+                    <p class="my-auto w-25">Balance: ${a.balance}</p>
+            </div>`
+
+                ).join('')
+
+                document.getElementById("accountsList").innerHTML = elements;
+            }
+        }
+        else {
+
+            const data = await res.json();
+
+            Toastify({
+                text: `${data.detail}`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+    }
+    catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
 
 
 }
 
-loadLogs();
+loadAccounts();
+
+const createAccount = async () => {
+
+    document.getElementById('aCreateAccountBtn').style.display = "none";
+    document.getElementById('aCreateAccountLoadingBtn').style.display = "block";
+
+    try {
+
+    const userId = document.getElementById("aUserIdInput").value;
+    const name = document.getElementById("aAcctNameInput").value;
+
+    const data = {
+        accountName: name,
+        UserId: userId
+    }
+
+
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+
+        // The API URL should not include userId for creating a new user
+       apiUrl = '/api/admin/account'; // Updated for creating a new user
+       const requestOptions = {
+       method: 'POST',
+       headers: headers,
+       body: JSON.stringify(data)
+        };
+
+
+        const res = await fetch(apiUrl, requestOptions);
+        if (res.ok) {
+            Toastify({
+                text: `Account created`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "success",
+                style: {
+                    background: "#198754"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+
+            loadAccounts();
+
+        }
+        else {
+            const data = await res.json();
+
+            Toastify({
+                text: `${data.detail}`,
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+
+    }
+    catch (error) {
+        Toastify({
+            text: `${error}`,
+            duration: 3000,
+            newWindow: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            className: "btn-danger",
+            style: {
+                background: "#dc3545"
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
+
+    document.getElementById('aCreateAccountBtn').style.display = "block";
+    document.getElementById('aCreateAccountLoadingBtn').style.display = "none";
+}
