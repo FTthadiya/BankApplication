@@ -8,6 +8,12 @@ builder.Services.AddDbContext<DBManager>();
 
 var app = builder.Build();
 
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    DBManager dbManager = scope.ServiceProvider.GetRequiredService<DBManager>();
+    dbManager.resetDatabase();
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

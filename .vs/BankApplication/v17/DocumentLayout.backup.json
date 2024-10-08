@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\data\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\data\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\models\\log.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\models\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|solutionrelative:bankapplicationdataapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3F39086-EACD-470A-A370-36C9845471A8}|BankApplicationDataAPI\\BankApplicationDataAPI.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankapplicationdataapi\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -13,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\wwwroot\\js\\admin.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -29,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\wwwroot\\js\\accounts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\wwwroot\\js\\accounts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|solutionrelative:bankwebapplication\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{19AD0FB4-C9B2-45F5-A6EC-4152A3431A9E}|BankWebApplication\\BankWebApplication.csproj|c:\\users\\giman\\onedrive\\documents\\curtin\\dc\\assignment 2 - part b\\dc_assignment2_partb\\bankwebapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -58,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 387,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -71,6 +99,110 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Transaction.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T20:17:28.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\User.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T20:57:10.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Log.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Log.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Models\\Log.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Log.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Models\\Log.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T20:56:08.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Account.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Models\\Account.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Models\\Account.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Models\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T20:54:47.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Admin.cshtml",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Admin.cshtml",
+              "RelativeDocumentMoniker": "BankWebApplication\\Views\\Home\\Admin.cshtml",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Admin.cshtml",
+              "RelativeToolTip": "BankWebApplication\\Views\\Home\\Admin.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-08T20:09:18.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DBManager.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Data\\DBManager.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Data\\DBManager.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Data\\DBManager.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Data\\DBManager.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAIwLsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T19:36:43.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\appsettings.json",
+              "RelativeDocumentMoniker": "BankWebApplication\\appsettings.json",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\appsettings.json",
+              "RelativeToolTip": "BankWebApplication\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-07T07:29:18.452Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Program.cs",
+              "RelativeDocumentMoniker": "BankApplicationDataAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Program.cs",
+              "RelativeToolTip": "BankApplicationDataAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T07:28:25.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "BankApplicationDataAPI\\Views\\Home\\Index.cshtml",
@@ -78,12 +210,11 @@
               "RelativeToolTip": "BankApplicationDataAPI\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T18:45:04.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T18:45:04.505Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Login.cshtml",
               "RelativeDocumentMoniker": "BankWebApplication\\Views\\Home\\Login.cshtml",
@@ -91,12 +222,11 @@
               "RelativeToolTip": "BankWebApplication\\Views\\Home\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T18:42:25.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T18:42:25.436Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "accounts.js",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\wwwroot\\js\\accounts.js",
               "RelativeDocumentMoniker": "BankWebApplication\\wwwroot\\js\\accounts.js",
@@ -104,38 +234,37 @@
               "RelativeToolTip": "BankWebApplication\\wwwroot\\js\\accounts.js",
               "ViewState": "AgIAAEEAAAAAAAAAAAAQwE8AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-04T18:16:07.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T18:16:07.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "BankWebApplication\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Controllers\\AccountController.cs",
               "RelativeToolTip": "BankWebApplication\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T18:15:12.937Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "BankWebApplication\\Controllers\\AdminController.cs",
               "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Controllers\\AdminController.cs",
               "RelativeToolTip": "BankWebApplication\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMMBAABcAAAAAAAAAA==",
+              "ViewState": "AgIAAGYBAAAAAAAAAAAEwHkBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T15:43:52.172Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "admin.js",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\wwwroot\\js\\admin.js",
               "RelativeDocumentMoniker": "BankWebApplication\\wwwroot\\js\\admin.js",
@@ -143,12 +272,11 @@
               "RelativeToolTip": "BankWebApplication\\wwwroot\\js\\admin.js",
               "ViewState": "AgIAADUAAAAAAAAAAAAAAEcAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-04T16:03:31.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T16:03:31.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "Accounts.cshtml",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Accounts.cshtml",
               "RelativeDocumentMoniker": "BankWebApplication\\Views\\Home\\Accounts.cshtml",
@@ -156,12 +284,11 @@
               "RelativeToolTip": "BankWebApplication\\Views\\Home\\Accounts.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T16:08:17.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T16:08:17.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "BankWebApplication\\Views\\Shared\\_Layout.cshtml",
@@ -169,12 +296,11 @@
               "RelativeToolTip": "BankWebApplication\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAAACYAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T18:13:18.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T18:13:18.59Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "AccountsController.cs",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Controllers\\AccountsController.cs",
               "RelativeDocumentMoniker": "BankApplicationDataAPI\\Controllers\\AccountsController.cs",
@@ -182,12 +308,11 @@
               "RelativeToolTip": "BankApplicationDataAPI\\Controllers\\AccountsController.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T17:36:20.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T17:36:20.18Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "BankWebApplication\\Views\\_ViewImports.cshtml",
@@ -195,12 +320,11 @@
               "RelativeToolTip": "BankWebApplication\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T18:13:10.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T18:13:10.966Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 18,
               "Title": "TransactionsController.cs",
               "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\Controllers\\TransactionsController.cs",
               "RelativeDocumentMoniker": "BankApplicationDataAPI\\Controllers\\TransactionsController.cs",
@@ -208,27 +332,7 @@
               "RelativeToolTip": "BankApplicationDataAPI\\Controllers\\TransactionsController.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T15:43:38.812Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 283,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Admin.cshtml",
-              "DocumentMoniker": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Admin.cshtml",
-              "RelativeDocumentMoniker": "BankWebApplication\\Views\\Home\\Admin.cshtml",
-              "ToolTip": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\Views\\Home\\Admin.cshtml",
-              "RelativeToolTip": "BankWebApplication\\Views\\Home\\Admin.cshtml",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAcwIwAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T16:01:32.972Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T15:43:38.812Z"
             }
           ]
         }
