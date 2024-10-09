@@ -58,8 +58,9 @@
                 onClick: function () { } // Callback after click
             }).showToast();
             await new Promise(r => setTimeout(r, 1000));
+            document.getElementById('logoutBtn').style.display = "block";
 
-            window.location.href = "/";
+            loadUserView("index");
         }
         else {
 

@@ -1,12 +1,6 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
-
-@section Scripts {
-    <script src="~/js/admin.js"></script>
-}
 
 
 <div id="usersView" style="display:flex" class="text-center flex-column mt-5 justify-content-center align-items-center">
@@ -16,7 +10,7 @@
         <div class="card w-50 p-3 m-4 gap-4 rounded-3 mh-100 d-flex align-items-center justify-content-lg-start">
                 <div class="d-flex w-100 px-3 gap-4 mt-4">
                     <input id="userSearchInput" class="form-control w-75" />
-                <button id="userSearchBtn" class="btn btn-warning w-25" onclick="onUserSearchBtnClick()">Search</button>
+                <button id="userSearchBtn" class="btn btn-warning w-25" onclick="adminOnUserSearchBtnClick()">Search</button>
                 </div>
                 
                 <div id="usersList" style="overflow-y:auto; max-height: 100vh" class="w-100 px-3">
@@ -61,11 +55,11 @@
                     </div>
                 </div>
                 <div class="d-flex gap-4 w-75">
-                    <button id="pUpdateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="updateOrCreateUser()">Update</button>
+                    <button id="pUpdateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="adminUpdateOrCreateUser()">Update</button>
                     <button id="pUpdateUserLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
-                    </button><button id="pCreateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="updateOrCreateUser(true)">Create as new user</button>
+                    </button><button id="pCreateUserBtn" type="button" class="btn btn-warning w-50 mt-5 align-self-center" onclick="adminUpdateOrCreateUser(true)">Create as new user</button>
                     <button id="pCreateUserLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...
@@ -84,21 +78,21 @@
         <div class="card p-4 d-flex flex-row m-4 gap-5 align-content-center align-items-center">
             <div class=" d-flex flex-column text-lg-start w-25 gap-2">
                 <label for="transactionFromDate" class="form-label">From</label>
-                <input id="transactionFromDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+                <input id="transactionFromDate" class="form-control" type="date" onchange="adminOnTransactionFilterChange()" />
             </div>
             <div class=" d-flex flex-column text-lg-start w-25 gap-2 ">
                 <label for="transactionToDate" class="form-label">To</label>
-                <input id="transactionToDate" class="form-control" type="date" onchange="onTransactionFilterChange()" />
+                <input id="transactionToDate" class="form-control" type="date" onchange="adminOnTransactionFilterChange()" />
             </div>
             <div class=" d-flex flex-column  text-lg-start w-25 gap-2">
                 <label for="transactionSearchInput" class="form-label">Search</label>
-                <input id="transactionSearchInput" class="form-control" type="text" onchange="onTransactionFilterChange()" />
+                <input id="transactionSearchInput" class="form-control" type="text" onchange="adminOnTransactionFilterChange()" />
             </div>
 
             <!-- Dropdown for sorting -->
             <div class="d-flex flex-column text-lg-start w-25 gap-2">
                 <label for="transactionSort" class="form-label">Sort by amount</label>
-                <select id="transactionSort" class="form-select" onchange="onTransactionFilterChange()">
+                <select id="transactionSort" class="form-select" onchange="adminOnTransactionFilterChange()">
                     <option value="">Select</option>
                     <option value="asc">Amount: Low to High</option>
                     <option value="desc">Amount: High to Low</option>
@@ -106,8 +100,8 @@
             </div>
 
             <div class="d-flex flex-column gap-2">
-                <button class="btn btn-warning mx-auto " onclick="searchTransactions()">Search</button>
-                <button class="btn btn-warning mx-auto" onclick="resetTransactionFilter()">Reset</button>
+                <button class="btn btn-warning mx-auto " onclick="adminSearchTransactions()">Search</button>
+                <button class="btn btn-warning mx-auto" onclick="adminResetTransactionFilter()">Reset</button>
             </div>
             
         </div>
@@ -122,7 +116,7 @@
 </div>
 
 
-<div id="logsView" style="display:none" class="text-center flex-column mt-5 justify-content-center align-items-center" onload="loadAccounts()">
+<div id="logsView" style="display:none" class="text-center flex-column mt-5 justify-content-center align-items-center" >
     <h1 class="text-muted">Logs</h1>
     <p class="text-muted">View EasyBank system logs.</p>
     <div class="card w-75 p-2 m-5 rounded-3 mh-100">
@@ -163,7 +157,7 @@
                 </div>
            
                 <div class="d-flex gap-4 w-75 justify-content-center">
-                    <button id="aCreateAccountBtn" type="button" class="btn btn-warning w-50 mt-5" onclick="createAccount()">Create Account</button>
+                    <button id="aCreateAccountBtn" type="button" class="btn btn-warning w-50 mt-5" onclick="adminCreateAccount()">Create Account</button>
                     <button id="aCreateAccountLoadingBtn" class="btn w-25 btn-warning" style="display:none" type="button" disabled>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...

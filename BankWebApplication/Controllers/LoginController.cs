@@ -13,6 +13,11 @@ namespace BankWebApplication.Controllers
     {
         private RestClient client = new RestClient("http://localhost:5104");
 
+        public IActionResult Index()
+        {
+           return PartialView();
+        }
+
         [HttpPost]
         public ActionResult Login([FromBody] User user)
         {

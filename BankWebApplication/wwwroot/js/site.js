@@ -3,11 +3,8 @@
 
 // Write your JavaScript code.
 
+
 //var test = "test";
-
-
-
-
 const getCookieByName = (name) => {
     const cookies = document.cookie.split(';');
     for (let cookie of cookies) {
@@ -18,9 +15,10 @@ const getCookieByName = (name) => {
     }
     return null;
 }
+
 const userId = getCookieByName("userId");
 
-const verifyLogin = async() => {
+const verifyLogin = async () => {
     const user = getCookieByName("userId");
     if (user == null) {
         Toastify({
@@ -37,21 +35,21 @@ const verifyLogin = async() => {
             onClick: function () { } // Callback after click
         }).showToast();
         await new Promise(r => setTimeout(r, 1000));
-        window.location.href = '/login';
+        loadUserView("login");
     }
     else {
-        
+
         await getCurUser();
 
         const isAdmin = getCookieByName("isAdmin");
 
         if (isAdmin == "True") {
-            window.location.href = '/admin'
+            loadUserView("admin");
         }
 
     }
 
-}
+};
 
 const getCurUser = async () => {
     try {
@@ -117,6 +115,82 @@ const getCurUser = async () => {
 
 };
 
+const loadUserView = (status, id) => {
+    apiUrl = '/home/dashboard';
+
+    if (status == "login")
+        apiUrl = '/api/login';
+    else if (status == "profile")
+        apiUrl = '/api/user';
+    else if (status == "accounts")
+        apiUrl = '/api/account';
+    else if (status == "transactions")
+        apiUrl = '/api/transaction/';
+    else if (status == "transfer")
+        apiUrl = '/api/transfer/';
+    else if (status == "admin")
+        apiUrl = '/api/admin/';
+    else
+        status = "index"
+
+    if (status != "index" && status != "login" && status != "admin") {
+        verifyLogin();
+    }
+
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Handle the data from the API
+            document.getElementById('main').innerHTML = data;
+            loadScripts(status, id);
+        })
+        .catch(error => {
+            // Handle any errors that occurred during the fetch
+            console.error('Fetch error:', error);
+        });
+}
+document.addEventListener("DOMContentLoaded", loadUserView);
+
+const loadScripts = (view, id) => {
+    document.getElementById('userNavLinks').style.display = "flex";
+    document.getElementById('adminNavLinks').style.display = "none";
+
+    var user = getCookieByName("userId");
+    if (view == "index" && user != null) {
+        const isAdmin = getCookieByName("isAdmin");
+
+        if (isAdmin == "True") {
+            loadUserView("admin");
+        } else {
+            loadUserData();
+        }
+    }
+    else if (view == "profile" && user != null) {
+        displayUser();
+    }
+    else if (view == "accounts" && user != null) {
+        loadAccounts();
+    }
+    else if (view == "transactions" && user != null) {
+        loadTransactionsData(id);
+    }
+    else if (view == "transfer" && user != null) {
+        loadTransferAccounts();
+    }
+    else if (view == "admin") {
+        document.getElementById('userNavLinks').style.display = "none";
+        document.getElementById('adminNavLinks').style.display = "flex";
+        adminLoadUsers();
+    }
+    
+}
+
 
 if (userId != null) {
     document.getElementById('logoutBtn').style.display = "block";
@@ -130,7 +204,8 @@ const logout = () => {
     document.getElementById('logoutBtn').style.display = "none";
     document.getElementById('navProfileIcon').style.display = "none";
     document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location.href = '/';
+    document.cookie = "isAdmin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    loadUserView("index");
 }
 
 
@@ -143,3 +218,4 @@ const showMessageBox = (data) => {
 const closeMessageBox = () => {
     document.getElementById('messageBoxOverlay').style.visibility = "collapse";
 }
+

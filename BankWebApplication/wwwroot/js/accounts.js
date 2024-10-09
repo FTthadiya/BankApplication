@@ -1,6 +1,4 @@
 ﻿
-verifyLogin();
-
 const loadAccounts = async () => {
 
     try {
@@ -77,10 +75,7 @@ const loadAccounts = async () => {
 
 }
 
-loadAccounts();
-
 
 const loadTransactions = (id) => {
-
-    window.location.href = "/transactions/" + id;
+    loadUserView("transactions", id);
 }

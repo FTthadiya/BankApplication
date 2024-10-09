@@ -15,7 +15,18 @@ namespace BankApplicationDataAPI.Controllers
         private String DataService = "http://localhost:5104/";
         private RestClient client;
 
-		[HttpPost("user")]
+        [HttpGet]
+        public IActionResult Index()
+        {
+
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return PartialView();
+            }
+            return PartialView("Welcome");
+        }
+
+        [HttpPost("user")]
 		public IActionResult CreateUser([FromBody] User newUser)
 		{
 			try
@@ -360,7 +371,7 @@ namespace BankApplicationDataAPI.Controllers
             IEnumerable<Transaction> transactions = JsonConvert.DeserializeObject<IEnumerable<Transaction>>(response.Content);
 
             // Sort transactions based on the sortOrder parameter
-            transactions = string.IsNullOrEmpty(sortOrder) || sortOrder.ToLower() != "desc"
+            transactions = string.IsNullOrEmpty(sortOrder) || sortOrder.ToLower() != "asc"
                 ? transactions.OrderBy(t => t.Amount)
                 : transactions.OrderByDescending(t => t.Amount);
 

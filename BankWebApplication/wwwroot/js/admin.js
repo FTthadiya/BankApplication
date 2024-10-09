@@ -8,31 +8,39 @@ const showView = (view) => {
         document.getElementById('logsView').style.display = "None";
         document.getElementById('transactionsView').style.display = "None";
 
+        adminLoadUsers();
     }
     else if (view == "TRANSACTIONS") {
         document.getElementById('usersView').style.display = "None";
         document.getElementById('logsView').style.display = "None";
         document.getElementById('accountsView').style.display = "None";
         document.getElementById('transactionsView').style.display = "Flex";
+
+        adminLoadTransactionsData();
     }
     else if (view == "LOGS") {
         document.getElementById('usersView').style.display = "None";
         document.getElementById('transactionsView').style.display = "None";
         document.getElementById('accountsView').style.display = "None";
         document.getElementById('logsView').style.display = "Flex";
+
+        adminLoadLogs();
+
     }
     else if (view == "ACCOUNTS") {
         document.getElementById('usersView').style.display = "None";
         document.getElementById('transactionsView').style.display = "None";
         document.getElementById('logsView').style.display = "None";
         document.getElementById('accountsView').style.display = "Block";
+
+        adminLoadAccounts();
     }
 }
 
 var users;
 var selectedUser;
 
-const loadUsers = async (term) => {
+const adminLoadUsers = async (term) => {
 
     try {
 
@@ -67,9 +75,9 @@ const loadUsers = async (term) => {
                     `<div class="card d-flex flex-row gap-4 mt-4 p-3 w-100 justify-content-between align-items-center">
                     <h4 class="my-auto w-25">${u.userName}</h4>
                     <p class="my-auto w-25">Id: ${u.userId}</p>
-                    <button class="btn btn-warning w-25" onclick="openUserEdit(${u.userId})">Edit</button>
-                    <button class="btn btn-warning w-25" onclick="toggleAccount(${u.userId})">${u.isActive ? "Deactivate" : "Activate"}</button>
-                    <button class="btn btn-danger w-25" onclick="deleteAccount(${u.userId})">Delete</button>
+                    <button class="btn btn-warning w-25" onclick="adminOpenUserEdit(${u.userId})">Edit</button>
+                    <button class="btn btn-warning w-25" onclick="adminToggleAccount(${u.userId})">${u.isActive ? "Deactivate" : "Activate"}</button>
+                    <button class="btn btn-danger w-25" onclick="adminDeleteAccount(${u.userId})">Delete</button>
             </div>`
 
                 ).join('')
@@ -116,19 +124,19 @@ const loadUsers = async (term) => {
 
 }
 
-loadUsers();
 
-const onUserSearchBtnClick = () => {
+const adminOnUserSearchBtnClick = () => {
     const fileInput = document.getElementById('userSearchInput').value;
 
-    loadUsers(fileInput);
+    adminLoadUsers(fileInput);
 }
 
 
-const openUserEdit = (userId) => {
+const adminOpenUserEdit = (userId) => {
     const userDetails = users.find(item => {
         return item.userId == userId
     })
+
     selectedUser = userDetails;
     if (userDetails != null) {
 
@@ -136,17 +144,15 @@ const openUserEdit = (userId) => {
         document.getElementById('pEmailInput').value = userDetails.email;
         document.getElementById('pPhoneInput').value = userDetails.phone;
         document.getElementById('pAddressInput').value = userDetails.address;
-        document.getElementById('pPasswordInput').value = userDetails.password;
-        document.getElementById('pPasswordConfInput').value = userDetails.password;
     }
 }
 
-const updateOrCreateUser = async (isCreate) => {
+const adminUpdateOrCreateUser = async (isCreate) => {
 
     var userDetails = selectedUser;
 
     try {
-        var picture = await getPictureAsString();
+        var picture = await adminGetPictureAsString();
         console.log(picture);
         var username = document.getElementById('pUsernameInput').value;
         var email = document.getElementById('pEmailInput').value;
@@ -154,6 +160,23 @@ const updateOrCreateUser = async (isCreate) => {
         var address = document.getElementById('pAddressInput').value;
         var password = document.getElementById('pPasswordInput').value;
         var confPassword = document.getElementById('pPasswordConfInput').value;
+
+        if (username == "" || email == "" || phone == "" || address == "" || password == "") {
+            Toastify({
+                text: "Please fill all fields",
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+            return;
+        }
 
         if (password != confPassword) {
             Toastify({
@@ -352,11 +375,11 @@ const updateOrCreateUser = async (isCreate) => {
     document.getElementById('pCreateUserBtn').style.display = "block";
     document.getElementById('pCreateUserLoadingBtn').style.display = "none";
 
-    loadUsers();
+    adminLoadUsers();
 
 } 
 
-const getPictureAsString = async () => {
+const adminGetPictureAsString = async () => {
     const fileInput = document.getElementById('pPictureInput');
 
     const file = fileInput.files[0];
@@ -380,19 +403,19 @@ const getPictureAsString = async () => {
     });
 }
 
-const setPictureFromString = (base64String) => {
+const adminSetPictureFromString = (base64String) => {
     const imgElement = document.getElementById('profileImage');
     imgElement.src = base64String;
 }
 
-const toggleAccount = async (userId) => {
+const adminToggleAccount = async (userId) => {
     try {
         const res = await fetch(`/api/admin/toggle/${userId}`, {
             method: 'PUT'
         });
         if (res.ok) {
             // Reload users after successful toggle
-            loadUsers();
+            adminLoadUsers();
         } else {
             const data = await res.json();
             // Show an error message if the request failed
@@ -417,14 +440,14 @@ const toggleAccount = async (userId) => {
     }
 };
 
-const deleteAccount = async (userId) => {
+const adminDeleteAccount = async (userId) => {
     try {
         const res = await fetch(`/api/admin/user/${userId}`, {
             method: 'DELETE'
         });
         if (res.ok) {
             // Reload users after successful toggle
-            loadUsers();
+            adminLoadUsers();
             Toastify({
                 text: `User Deleted`,
                 duration: 3000,
@@ -468,7 +491,7 @@ const deleteAccount = async (userId) => {
 var transactions;
 var filteredTransactions;
 
-const loadTransactionsData = async () => {
+const adminLoadTransactionsData = async () => {
     try {
 
         const apiUrl = '/api/admin/transactions';
@@ -484,7 +507,7 @@ const loadTransactionsData = async () => {
             filteredTransactions = data;
 
             console.log(data);
-            renderTransactions(data);
+            adminRenderTransactions(data);
         }
         else {
 
@@ -524,9 +547,8 @@ const loadTransactionsData = async () => {
 
 }
 
-loadTransactionsData();
 
-const renderTransactions = (data) => {
+const adminRenderTransactions = (data) => {
 
     if (data.length == 0) {
         document.getElementById("transactionsList").innerHTML = `<div class="card d-flex flex-row gap-4 m-4 p-5 justify-content-center text-center">No transactions found</div>`;
@@ -548,11 +570,13 @@ const renderTransactions = (data) => {
 
 }
 
-const onTransactionFilterChange = async () => {
+const adminOnTransactionFilterChange = async () => {
     const fromDate = document.getElementById("transactionFromDate").value;
     const toDate = document.getElementById("transactionToDate").value;
     const sort = document.getElementById("transactionSort").value;
-    
+
+    filteredTransactions = transactions;
+
 
     if (sort == "asc" || sort == "desc") {
         try {
@@ -565,8 +589,6 @@ const onTransactionFilterChange = async () => {
                 const data = await res.json()
 
                 filteredTransactions = data;
-
-                renderTransactions(data);
             }
             else {
 
@@ -610,24 +632,24 @@ const onTransactionFilterChange = async () => {
         const from = new Date(fromDate);
         const to = new Date(toDate);
 
-        filteredTransactions = transactions.filter(transaction => {
+        filteredTransactions = filteredTransactions.filter(transaction => {
             const transactionDate = new Date(transaction.dateTime);
             return transactionDate >= from && transactionDate <= to;
         });
 
     }
 
-    renderTransactions(filteredTransactions);
+    adminRenderTransactions(filteredTransactions);
 };
 
 
-const resetTransactionFilter = () => {
-    renderTransactions(transactions);
+const adminResetTransactionFilter = () => {
+    adminRenderTransactions(transactions);
     document.getElementById("transactionFromDate").value = "";
     document.getElementById("transactionToDate").value = "";
 }
 
-const searchTransactions = async () => {
+const adminSearchTransactions = async () => {
     // Get the transaction ID from the input field
     const transactionIdInput = document.getElementById('transactionSearchInput').value;
 
@@ -711,7 +733,7 @@ const searchTransactions = async () => {
 
 ////////////////////////////////////// Logs //////////////////////////////////////////
 
-const loadLogs = async () => {
+const adminLoadLogs = async () => {
 
     try {
 
@@ -779,12 +801,11 @@ const loadLogs = async () => {
     }
 }
 
-loadLogs();
 
 ///////////////////////////// Account /////////////////////////////////////////
 
 
-const loadAccounts = async () => {
+const adminLoadAccounts = async () => {
 
     try {
 
@@ -856,9 +877,8 @@ const loadAccounts = async () => {
 
 }
 
-loadAccounts();
 
-const createAccount = async () => {
+const adminCreateAccount = async () => {
 
     document.getElementById('aCreateAccountBtn').style.display = "none";
     document.getElementById('aCreateAccountLoadingBtn').style.display = "block";
@@ -903,7 +923,7 @@ const createAccount = async () => {
                 onClick: function () { } // Callback after click
             }).showToast();
 
-            loadAccounts();
+            adminLoadAccounts();
 
         }
         else {

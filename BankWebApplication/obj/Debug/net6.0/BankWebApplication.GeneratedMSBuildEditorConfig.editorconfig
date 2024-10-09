@@ -9,63 +9,83 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BankWebApplication
 build_property.RootNamespace = BankWebApplication
-build_property.ProjectDir = C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\DC_Assignment2_PartB\BankWebApplication\
+build_property.ProjectDir = C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B - V2\DC_Assignment2_PartB\BankWebApplication\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B\DC_Assignment2_PartB\BankWebApplication
+build_property.MSBuildProjectDirectory = C:\Users\giman\OneDrive\Documents\Curtin\DC\Assignment 2 - Part B - V2\DC_Assignment2_PartB\BankWebApplication
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Accounts.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2NvdW50cy5jc2h0bWw=
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Account/AccountError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50RXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Account/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Index.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Home/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Profile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Transactions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFuc2FjdGlvbnMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Transfer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFuc2Zlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Home/Welcome.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Home/Welcome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXZWxjb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Shared/Error.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/_ViewImports.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Transaction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Transaction/TransactionError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cVHJhbnNhY3Rpb25FcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Transfer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNmZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Transfer/TransferError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNmZXJcVHJhbnNmZXJFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/User/UserError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/_ViewStart.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B/DC_Assignment2_PartB/BankWebApplication/Views/Shared/_Layout.cshtml]
+[C:/Users/giman/OneDrive/Documents/Curtin/DC/Assignment 2 - Part B - V2/DC_Assignment2_PartB/BankWebApplication/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dob75tthd5

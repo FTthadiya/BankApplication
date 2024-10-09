@@ -1,7 +1,10 @@
 ﻿var transactions;
-document.getElementById('navProfileIcon').style.display = "None";
+/*document.getElementById('navProfileIcon').style.display = "None";*/
 
 const loadTransactionsData = async (id) => {
+
+    verifyLogin();
+
 
     try {
 

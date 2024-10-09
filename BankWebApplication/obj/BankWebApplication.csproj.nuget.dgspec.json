@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj": {}
+    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj": {
+    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
+        "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
         "projectName": "BankApplicationDataAPI",
-        "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
+        "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj",
         "packagesPath": "C:\\Users\\giman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\obj\\",
+        "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\giman\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -88,14 +88,14 @@
         }
       }
     },
-    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj": {
+    "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj",
+        "projectUniqueName": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj",
         "projectName": "BankWebApplication",
-        "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj",
+        "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankWebApplication\\BankWebApplication.csproj",
         "packagesPath": "C:\\Users\\giman\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankWebApplication\\obj\\",
+        "outputPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankWebApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\giman\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,8 +113,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj": {
-                "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj"
+              "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj": {
+                "projectPath": "C:\\Users\\giman\\OneDrive\\Documents\\Curtin\\DC\\Assignment 2 - Part B - V2\\DC_Assignment2_PartB\\BankApplicationDataAPI\\BankApplicationDataAPI.csproj"
               }
             }
           }

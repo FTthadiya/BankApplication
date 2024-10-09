@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Home\Login.cshtml">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <Folder Include="Views\Index\" />
   </ItemGroup>
 
 </Project>

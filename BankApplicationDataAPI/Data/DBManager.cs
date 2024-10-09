@@ -125,6 +125,18 @@ namespace BankApplicationDataAPI.Data
                 IsActive = true
             });
 
+            users.Add(new User
+            {
+                UserId = 9999998,
+                UserName = "User",
+                Password = "123456",
+                Email = "user@gmail.com",
+                Address = "232 Ivy Ln, Hilltop, OH",
+                Phone = 01239898 + random.Next(0, 10000),
+                IsAdmin = false,
+                IsActive = true
+            });
+
 
             for (int i = 1; i <= 10; i++)
             {

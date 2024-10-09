@@ -1,9 +1,9 @@
 import sqlite3
 
-conn = sqlite3.connect('BankData.db')
-cursor = conn.cursor()
+db = sqlite3.connect('BankData.db')
+dbCursor = db.cursor()
 
-cursor.execute('''
+dbCursor.execute('''
 CREATE TABLE IF NOT EXISTS Users (
     UserId INTEGER PRIMARY KEY,
     UserName TEXT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Users (
     IsActive BOOLEAN NOT NULL DEFAULT 1
 )''')
 
-cursor.execute('''
+dbCursor.execute('''
 CREATE TABLE IF NOT EXISTS Accounts (
     AccountId INTEGER PRIMARY KEY,
     AccountNo INTEGER NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Accounts (
     FOREIGN KEY (UserId) REFERENCES User(UserId)
 )''')
 
-cursor.execute('''
+dbCursor.execute('''
 CREATE TABLE IF NOT EXISTS Transactions (
     TransactionId INTEGER PRIMARY KEY,
     Type TEXT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS Transactions (
     FOREIGN KEY (AccountId) REFERENCES Account(AccountId)
 )''')
 
-cursor.execute('''
+dbCursor.execute('''
 CREATE TABLE IF NOT EXISTS Logs (
     LogId INTEGER PRIMARY KEY,
     TimeStamp DATETIME NOT NULL DEFAULT (datetime('now')),
@@ -45,23 +45,7 @@ CREATE TABLE IF NOT EXISTS Logs (
     LogMessage TEXT NOT NULL
 )''')
 
-users = []
-accounts = []
-transactions = []
-
-admin_user = {
-    'UserId': 6,
-    'UserName': "TestAdmin",
-    'Password': "123456",
-    'Email': "admin@gmail.com",
-    'Address': "Address",
-    'Phone': 891231231,
-    'IsAdmin': True,
-    'IsActive': False
-}
-users.append(admin_user)
-
-users_data = [
+users = [
     {
         'UserId': 1,
         'UserName': "TestUser1",
@@ -114,10 +98,19 @@ users_data = [
     }
 ]
 
-for user in users_data:
-    users.append(user)
+admin = {
+    'UserId': 6,
+    'UserName': "TestAdmin",
+    'Password': "123456",
+    'Email': "admin@gmail.com",
+    'Address': "Address",
+    'Phone': 891231231,
+    'IsAdmin': True,
+    'IsActive': False
+}
+users.append(admin)
 
-accounts_data = [
+accounts = [
     {
         'AccountId': 1,
         'AccountNo': 1,
@@ -190,10 +183,7 @@ accounts_data = [
     }
 ]
 
-for account in accounts_data:
-    accounts.append(account)
-
-transactions_data = [
+transactions = [
     {'TransactionId': 1,'Type': "Withdrawal",'Amount': 8000.00,'Description': "Funds",'AccountId': 1},
     {'TransactionId': 2,'Type': "Withdrawal",'Amount': 5000.00, 'Description': "Funds",'AccountId': 1},
     {'TransactionId': 3,'Type': "Deposit",'Amount': 10000.00,'Description': "Interest",'AccountId': 1},
@@ -271,29 +261,26 @@ transactions_data = [
     {'TransactionId': 75, 'Type': "Deposit", 'Amount': 10000.00, 'Description': "Investment", 'AccountId': 10}
 ]
 
-for transaction in transactions_data:
-    transactions.append(transaction)
-
 for user in users:
-    cursor.execute('''
+    dbCursor.execute('''
     INSERT INTO Users (UserId, UserName, Password, Email, Address, Phone, IsAdmin, IsActive) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)''', 
     (user['UserId'], user['UserName'], user['Password'], user['Email'], 
      user['Address'], user['Phone'], user['IsAdmin'], user['IsActive']))
     
 for account in accounts:
-    cursor.execute('''
+    dbCursor.execute('''
     INSERT INTO Accounts (AccountId, AccountNo, AccountName, Balance, UserId) 
     VALUES (?, ?, ?, ?, ?)''', 
     (account['AccountId'], account['AccountNo'], account['AccountName'], 
      account['Balance'], account['UserId']))
     
 for transaction in transactions:
-    cursor.execute('''
+    dbCursor.execute('''
     INSERT INTO Transactions (TransactionId, Type, Amount, Description, AccountId) 
     VALUES (?, ?, ?, ?, ?)''', 
     (transaction['TransactionId'], transaction['Type'], transaction['Amount'], 
      transaction['Description'], transaction['AccountId']))
     
-conn.commit()
-conn.close()
+db.commit()
+db.close()

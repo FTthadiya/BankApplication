@@ -2,9 +2,11 @@
 
 const displayUser = async () => {
 
+    verifyLogin();
+
+
     userDetails = await getCurUser();
     if (userDetails != null) {
-        console.log(userDetails.picture)
         if (userDetails.picture != null) {
             setPictureFromString(userDetails.picture);
         }
@@ -18,11 +20,8 @@ const displayUser = async () => {
     }
 }
 
-displayUser();
-
 const showEdit = () => {
-    if (userDetails != null)
-    {
+    if (userDetails != null) {
         document.getElementById('pInputsCard').style.display = "block";
 
         document.getElementById('pUsernameInput').value = userDetails.userName;
@@ -42,7 +41,6 @@ const updateUser = async () => {
 
     try {
         var picture = await getPictureAsString();
-        console.log(picture);
         var username = document.getElementById('pUsernameInput').value;
         var email = document.getElementById('pEmailInput').value;
         var phone = document.getElementById('pPhoneInput').value;
@@ -100,7 +98,7 @@ const updateUser = async () => {
             };
         }
 
-        
+
 
         const apiUrl = '/api/user/' + userDetails.UserId;
         const headers = {
@@ -171,7 +169,7 @@ const updateUser = async () => {
     document.getElementById('pUpdateLoadingBtn').style.display = "none";
 }
 
-const getPictureAsString = async() => {
+const getPictureAsString = async () => {
     const fileInput = document.getElementById('pPictureInput');
 
     const file = fileInput.files[0];
@@ -191,7 +189,7 @@ const getPictureAsString = async() => {
             reject(new Error("Failed to read file"));
         };
 
-        reader.readAsDataURL(file); 
+        reader.readAsDataURL(file);
     });
 }
 

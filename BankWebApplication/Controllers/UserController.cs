@@ -5,10 +5,20 @@ using RestSharp;
 
 namespace BankWebApplication.Controllers
 {
+
     [Route("api/[controller]")]
     public class UserController : Controller
     {
         private RestClient client = new RestClient("http://localhost:5104");
+
+        public IActionResult Index()
+        {
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return PartialView();
+            }
+            return PartialView("UserError");
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetUser(int id)

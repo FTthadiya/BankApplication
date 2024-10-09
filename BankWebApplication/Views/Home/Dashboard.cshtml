@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "EasyBank";
+}
+
+@section Scripts {
+    <script src="~/js/index.js"></script>
+}
+
+<div class="text-center d-flex flex-column mt-4 justify-content-center align-items-center">
+    <h1 class="text-warning">Easy<small class="text-muted">Bank</small></h1>
+    <p class="text-muted">Banking is easy with EasyBank :)</p>
+    <div class="w-100 mt-4 d-flex justify-content-center  fade-in">
+        <div class="card w-50 p-4 m-4 gap-4 rounded-3 mh-100 d-flex flex-column align-items-lg-stretch justify-content-center">
+            <div class="d-flex flex-row gap-5">
+                <img id="dashProfilePicture" style="width: 15rem; height: 15rem; object-fit:cover;" class="mb-4 bg-warning p-2 rounded-circle overflow-hidden" />
+                <div class="d-flex flex-column justify-content-center align-items-start w-50 text-start">
+                    <h2 id="dashUsername" class="text-muted">Loading...</h2>
+                    <p id="dashEmail" class="text-muted" style="font-weight: 500"></p>
+                    <p id="dashAccounts" style="font-weight: 500"></p>
+                </div>
+            </div>
+        </div>
+        <div class="card w-50 p-4 m-4 rounded-3 d-flex gap-3" style="max-height: 70vh">
+            <h2 class="m-2 text-muted">Acccounts</h2>
+            <div id="dashAccountsList" style="overflow-y:auto; height: 100%" class="h-100 card-body d-flex flex-column gap-3 justify-content-center">
+                <div class="mx-auto mb-5 p-5 text-warning h-50">
+                    <div class="h-100 mb-3 my-auto">Loading </div>
+                    <div class="spinner-border text-warning" role="status">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

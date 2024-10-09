@@ -1,5 +1,6 @@
-﻿verifyLogin();
-const loadAccounts = async () => {
+﻿
+const loadTransferAccounts = async () => {
+    verifyLogin();
 
     try {
 
@@ -67,7 +68,6 @@ const loadAccounts = async () => {
     
 }
 
-loadAccounts();
 
 
 const transferMoney = async () => {
@@ -102,7 +102,7 @@ const transferMoney = async () => {
         document.getElementById('transferBtn').style.display = "none";
         document.getElementById('transferLoadingBtn').style.display = "block";
 
-        const apiUrl = `/api/transaction?fromAcct=${fromAcc}&toAcct=${toAcc}&amount=${amount}&description=${description}`;
+        const apiUrl = `/api/transfer/transferMoney?fromAcct=${fromAcc}&toAcct=${toAcc}&amount=${amount}&description=${description}`;
 
         const res = await fetch(apiUrl);
 

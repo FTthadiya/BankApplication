@@ -11,6 +11,15 @@ namespace BankWebApplication.Controllers
     {
         private RestClient client = new RestClient("http://localhost:5104");
 
+        public IActionResult Index()
+        {
+            if (Request.Cookies.ContainsKey("UserID"))
+            {
+                return PartialView();
+            }
+            return PartialView("AccountError");
+        }
+
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<Account>> GetAccountsByUser(int id)
         {
