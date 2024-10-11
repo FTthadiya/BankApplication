@@ -25,46 +25,67 @@ namespace BankApplicationDataAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
         {
-          if (_context.Transactions == null)
-          {
-              return NotFound();
-          }
-            return await _context.Transactions.ToListAsync();
+            try {
+                if (_context.Transactions == null)
+                {
+                    return NotFound();
+                }
+                return await _context.Transactions.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
+            }
         }
 
         // GET: api/Transactions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransaction(int id)
         {
-          if (_context.Transactions == null)
-          {
-              return NotFound();
-          }
-            var transaction = await _context.Transactions.FindAsync(id);
+            try {
+                if (_context.Transactions == null)
+                {
+                    return NotFound();
+                }
+                var transaction = await _context.Transactions.FindAsync(id);
 
-            if (transaction == null)
-            {
-                return NotFound();
+                if (transaction == null)
+                {
+                    return NotFound();
+                }
+
+                return transaction;
             }
-
-            return transaction;
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
+            }
         }
 
         [HttpGet("account/{acctId}")]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactionsByAccount(int acctId)
         {
-            if (_context.Transactions == null)
-            {
-                return NotFound();
-            }
-            var transactions = await _context.Transactions.Where(t => t.AccountId == acctId).ToListAsync();
+            try {
+                if (_context.Transactions == null)
+                {
+                    return NotFound();
+                }
+                var transactions = await _context.Transactions.Where(t => t.AccountId == acctId).ToListAsync();
 
-            if (transactions == null)
-            {
-                return NotFound();
-            }
+                if (transactions == null)
+                {
+                    return NotFound();
+                }
 
-            return transactions;
+                return transactions;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
+            }
         }
 
         // PUT: api/Transactions/5
@@ -72,30 +93,37 @@ namespace BankApplicationDataAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTransaction(int id, Transaction transaction)
         {
-            if (id != transaction.TransactionId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(transaction).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TransactionExists(id))
+            try {
+                if (id != transaction.TransactionId)
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+                _context.Entry(transaction).State = EntityState.Modified;
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TransactionExists(id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
+            }
         }
 
         // POST: api/Transactions
@@ -103,61 +131,75 @@ namespace BankApplicationDataAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-            
-          if (_context.Transactions == null)
-          {
-              return Problem("Entity set 'DBManager.Transactions'  is null.");
-          }
-
-            var account = await _context.Accounts.FindAsync(transaction.AccountId);
-
-            if (account == null)
-            {
-                return NotFound("Account " + transaction.AccountId + " does not exist");
-            }
-
-            if (transaction.Type == "Withdraw")
-            {
-                if (account.Balance > transaction.Amount)
+            try {
+                if (_context.Transactions == null)
                 {
-                    account.Balance = account.Balance - transaction.Amount;
+                    return Problem("Entity set 'DBManager.Transactions'  is null.");
+                }
+
+                var account = await _context.Accounts.FindAsync(transaction.AccountId);
+
+                if (account == null)
+                {
+                    return NotFound("Account " + transaction.AccountId + " does not exist");
+                }
+
+                if (transaction.Type == "Withdraw")
+                {
+                    if (account.Balance > transaction.Amount)
+                    {
+                        account.Balance = account.Balance - transaction.Amount;
+                    }
+                    else
+                    {
+                        return Problem("Insufficient funds");
+                    }
+
                 }
                 else
                 {
-                    return Problem("Insufficient funds");
+                    account.Balance += transaction.Amount;
                 }
 
+
+                _context.Transactions.Add(transaction);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
             }
-            else
-            { 
-                account.Balance += transaction.Amount;
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
             }
-
-
-            _context.Transactions.Add(transaction);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
         }
 
         // DELETE: api/Transactions/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransaction(int id)
         {
-            if (_context.Transactions == null)
-            {
-                return NotFound();
-            }
-            var transaction = await _context.Transactions.FindAsync(id);
-            if (transaction == null)
-            {
-                return NotFound();
-            }
+            try {
+                if (_context.Transactions == null)
+                {
+                    return NotFound();
+                }
+                var transaction = await _context.Transactions.FindAsync(id);
+                if (transaction == null)
+                {
+                    return NotFound();
+                }
 
-            _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
+                _context.Transactions.Remove(transaction);
+                await _context.SaveChangesAsync();
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing transactions in data server");
+            }
+           
         }
 
         private bool TransactionExists(int id)

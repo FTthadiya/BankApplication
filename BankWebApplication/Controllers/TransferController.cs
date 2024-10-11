@@ -22,7 +22,7 @@ namespace BankWebApplication.Controllers
         }
 
         [HttpGet("transferMoney")]
-        public ActionResult Transfer([FromQuery] int fromAcct, [FromQuery] int toAcct, [FromQuery] int amount, [FromQuery] string description)
+        public ActionResult Transfer([FromQuery] int fromAcct, [FromQuery] int toAcct, [FromQuery] double amount, [FromQuery] string description)
         {
 
             try

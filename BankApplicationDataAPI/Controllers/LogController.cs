@@ -26,90 +26,125 @@ namespace BankApplicationDataAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Log>>> RetrieveAllLogs()
         {
-            if (_databaseContext.Logs == null)
-            {
-                return NotFound("Log data is not available.");
+            try {
+                if (_databaseContext.Logs == null)
+                {
+                    return NotFound("Log data is not available.");
+                }
+                return await _databaseContext.Logs.ToListAsync();
             }
-            return await _databaseContext.Logs.ToListAsync();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing logs in data server");
+            }
         }
 
         // GET: api/Logs/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<Log>> RetrieveLogById(int id)
         {
-            if (_databaseContext.Logs == null)
-            {
-                return NotFound("Log data is not available.");
-            }
-            var logEntry = await _databaseContext.Logs.FindAsync(id);
+            try {
+                if (_databaseContext.Logs == null)
+                {
+                    return NotFound("Log data is not available.");
+                }
+                var logEntry = await _databaseContext.Logs.FindAsync(id);
 
-            if (logEntry == null)
-            {
-                return NotFound($"Log entry with ID {id} not found.");
-            }
+                if (logEntry == null)
+                {
+                    return NotFound($"Log entry with ID {id} not found.");
+                }
 
-            return logEntry;
+                return logEntry;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing logs in data server");
+            }
         }
 
         // PUT: api/Logs/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateLogEntry(int id, Log log)
         {
-            if (id != log.LogId)
-            {
-                return BadRequest("Log ID mismatch.");
-            }
-
-            _databaseContext.Entry(log).State = EntityState.Modified;
-
-            try
-            {
-                await _databaseContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LogEntryExists(id))
+            try {
+                if (id != log.LogId)
                 {
-                    return NotFound($"Log entry with ID {id} does not exist.");
+                    return BadRequest("Log ID mismatch.");
                 }
-                throw;
-            }
 
-            return NoContent();
+                _databaseContext.Entry(log).State = EntityState.Modified;
+
+                try
+                {
+                    await _databaseContext.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!LogEntryExists(id))
+                    {
+                        return NotFound($"Log entry with ID {id} does not exist.");
+                    }
+                    throw;
+                }
+
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing logs in data server");
+            }
         }
 
         // POST: api/Logs
         [HttpPost]
         public async Task<ActionResult<Log>> CreateNewLog(Log log)
         {
-            if (_databaseContext.Logs == null)
-            {
-                return Problem("Log set in DBManager is null.");
-            }
-            _databaseContext.Logs.Add(log);
-            await _databaseContext.SaveChangesAsync();
+            try {
+                if (_databaseContext.Logs == null)
+                {
+                    return Problem("Log set in DBManager is null.");
+                }
+                _databaseContext.Logs.Add(log);
+                await _databaseContext.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(RetrieveLogById), new { id = log.LogId }, log);
+                return CreatedAtAction(nameof(RetrieveLogById), new { id = log.LogId }, log);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing logs in data server");
+            }
         }
 
         // DELETE: api/Logs/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveLogEntry(int id)
         {
-            if (_databaseContext.Logs == null)
-            {
-                return NotFound("Log data is not available.");
-            }
-            var logEntry = await _databaseContext.Logs.FindAsync(id);
-            if (logEntry == null)
-            {
-                return NotFound($"Log entry with ID {id} not found.");
-            }
+            try {
+                if (_databaseContext.Logs == null)
+                {
+                    return NotFound("Log data is not available.");
+                }
+                var logEntry = await _databaseContext.Logs.FindAsync(id);
+                if (logEntry == null)
+                {
+                    return NotFound($"Log entry with ID {id} not found.");
+                }
 
-            _databaseContext.Logs.Remove(logEntry);
-            await _databaseContext.SaveChangesAsync();
+                _databaseContext.Logs.Remove(logEntry);
+                await _databaseContext.SaveChangesAsync();
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Problem("Error occured while processing logs in data server");
+            }
         }
 
         private bool LogEntryExists(int id)

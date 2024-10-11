@@ -87,21 +87,39 @@ const adminLoadUsers = async (term) => {
         }
         else {
 
-            const data = await res.json();
+            try {
+                const data = await res.json();
 
-            Toastify({
-                text: `${data.detail}`,
-                duration: 3000,
-                newWindow: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "btn-danger",
-                style: {
-                    background: "#dc3545"
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            
         }
 
     }
@@ -335,21 +353,38 @@ const adminUpdateOrCreateUser = async (isCreate) => {
 
         }
         else {
-            const data = await res.json();
+            try {
+                const data = await res.json();
 
-            Toastify({
-                text: `${data.detail}`,
-                duration: 3000,
-                newWindow: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "btn-danger",
-                style: {
-                    background: "#dc3545"
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
 
 
@@ -417,16 +452,38 @@ const adminToggleAccount = async (userId) => {
             // Reload users after successful toggle
             adminLoadUsers();
         } else {
-            const data = await res.json();
-            // Show an error message if the request failed
-            Toastify({
-                text: data.detail,
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                className: "btn-danger",
-                style: { background: "#dc3545" }
-            }).showToast();
+            try {
+                const data = await res.json();
+
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
     } catch (error) {
         Toastify({
@@ -462,16 +519,38 @@ const adminDeleteAccount = async (userId) => {
                 onClick: function () { } // Callback after click
             }).showToast();
         } else {
-            const data = await res.json();
-            // Show an error message if the request failed
-            Toastify({
-                text: data.detail,
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                className: "btn-danger",
-                style: { background: "#dc3545" }
-            }).showToast();
+            try {
+                const data = await res.json();
+
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
     } catch (error) {
 
@@ -592,6 +671,7 @@ const adminOnTransactionFilterChange = async () => {
             }
             else {
 
+                 try {
                 const data = await res.json();
 
                 Toastify({
@@ -607,6 +687,22 @@ const adminOnTransactionFilterChange = async () => {
                     },
                     onClick: function () { } // Callback after click
                 }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
             }
 
         }
@@ -766,21 +862,38 @@ const adminLoadLogs = async () => {
         }
         else {
 
-            const data = await res.json();
+            try {
+                const data = await res.json();
 
-            Toastify({
-                text: `${data.detail}`,
-                duration: 3000,
-                newWindow: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "btn-danger",
-                style: {
-                    background: "#dc3545"
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
 
     }
@@ -840,21 +953,38 @@ const adminLoadAccounts = async () => {
         }
         else {
 
-            const data = await res.json();
+            try {
+                const data = await res.json();
 
-            Toastify({
-                text: `${data.detail}`,
-                duration: 3000,
-                newWindow: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "btn-danger",
-                style: {
-                    background: "#dc3545"
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
 
     }
@@ -927,21 +1057,38 @@ const adminCreateAccount = async () => {
 
         }
         else {
-            const data = await res.json();
+            try {
+                const data = await res.json();
 
-            Toastify({
-                text: `${data.detail}`,
-                duration: 3000,
-                newWindow: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                className: "btn-danger",
-                style: {
-                    background: "#dc3545"
-                },
-                onClick: function () { } // Callback after click
-            }).showToast();
+                Toastify({
+                    text: `${data.detail}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
+            catch {
+                Toastify({
+                    text: `Server replied with a error: ${res.status}`,
+                    duration: 3000,
+                    newWindow: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    className: "btn-danger",
+                    style: {
+                        background: "#dc3545"
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+            }
         }
 
 
