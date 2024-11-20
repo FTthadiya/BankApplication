@@ -15,8 +15,4 @@
     <ProjectReference Include="..\BankApplicationDataAPI\BankApplicationDataAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Index\" />
-  </ItemGroup>
-
 </Project>

@@ -162,6 +162,8 @@ const adminOpenUserEdit = (userId) => {
         document.getElementById('pEmailInput').value = userDetails.email;
         document.getElementById('pPhoneInput').value = userDetails.phone;
         document.getElementById('pAddressInput').value = userDetails.address;
+        document.getElementById('pPasswordInput').value = userDetails.password;
+        document.getElementById('pPasswordConfInput').value = userDetails.password;
     }
 }
 
@@ -179,9 +181,26 @@ const adminUpdateOrCreateUser = async (isCreate) => {
         var password = document.getElementById('pPasswordInput').value;
         var confPassword = document.getElementById('pPasswordConfInput').value;
 
-        if (username == "" || email == "" || phone == "" || address == "" || password == "") {
+        if (username == "" || email == "" || phone == "" || address == "") {
             Toastify({
                 text: "Please fill all fields",
+                duration: 3000,
+                newWindow: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                className: "btn-danger",
+                style: {
+                    background: "#dc3545"
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+            return;
+        }
+
+        if (password == "") {
+            Toastify({
+                text: "Password is required for updating",
                 duration: 3000,
                 newWindow: true,
                 gravity: "top", // `top` or `bottom`
@@ -636,6 +655,7 @@ const adminRenderTransactions = (data) => {
         const elements = data.slice(0).reverse().map(a =>
 
             `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
+                    <p>ID: ${a.transactionId}</p>
                     <p>${new Date(a.dateTime).toLocaleString()}</p>
                     <p>${a.type}</p>
                     <p>Amount: ${a.amount}</p>
@@ -799,6 +819,7 @@ const adminSearchTransactions = async () => {
 
             const transactionHTML = `
                 <div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between">
+                    <p>ID: ${transaction.transactionId}</p>
                     <p>${new Date(transaction.dateTime).toLocaleString()}</p>                    
                     <p>${transaction.type}</p>
                     <p>Amount: ${transaction.amount}</p>
@@ -850,7 +871,7 @@ const adminLoadLogs = async () => {
 
                     `<div class="card d-flex flex-row gap-4 m-4 p-3 justify-content-between align-items-center">
                     <h4 class="my-auto">${l.logId}</h4>
-                    <p class="my-auto">${l.timeStamp}</p>
+                    <p class="my-auto">${Date(l.timeStampnew).toString()}</p>
                     <p class="my-auto">Action: ${l.action}</p>
                     <button class="btn btn-warning" onclick="showMessageBox({title: 'Log - ${l.logId}', desc: '${l.logMessage}' })">Log Message</button>
                     </div>`

@@ -36,7 +36,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing logs in data server");
+                return Problem("Error occurred while processing logs in data server");
             }
         }
 
@@ -61,7 +61,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing logs in data server");
+                return Problem("Error occurred while processing logs in data server");
             }
         }
 
@@ -95,7 +95,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing logs in data server");
+                return Problem("Error occurred while processing logs in data server");
             }
         }
 
@@ -116,7 +116,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing logs in data server");
+                return Problem("Error occurred while processing logs in data server");
             }
         }
 
@@ -125,6 +125,7 @@ namespace BankApplicationDataAPI.Controllers
         public async Task<IActionResult> RemoveLogEntry(int id)
         {
             try {
+
                 if (_databaseContext.Logs == null)
                 {
                     return NotFound("Log data is not available.");
@@ -139,11 +140,12 @@ namespace BankApplicationDataAPI.Controllers
                 await _databaseContext.SaveChangesAsync();
 
                 return NoContent();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing logs in data server");
+                return Problem("Error occurred while processing logs in data server");
             }
         }
 

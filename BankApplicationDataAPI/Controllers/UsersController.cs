@@ -35,7 +35,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 
@@ -60,7 +60,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 
@@ -84,7 +84,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 
@@ -122,7 +122,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 
@@ -144,7 +144,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 
@@ -171,7 +171,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing users in data server");
+                return Problem("Error occurred while processing users in data server");
             }
         }
 

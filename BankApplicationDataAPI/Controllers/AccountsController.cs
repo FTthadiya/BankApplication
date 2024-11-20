@@ -35,7 +35,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
             
         }
@@ -62,7 +62,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
         }
 
@@ -87,7 +87,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
         }
 
@@ -112,7 +112,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
 
         }
@@ -152,7 +152,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
 
         }
@@ -175,7 +175,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
             
         }
@@ -203,7 +203,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing accounts in data server");
+                return Problem("Error occurred while processing accounts in data server");
             }
         }
 

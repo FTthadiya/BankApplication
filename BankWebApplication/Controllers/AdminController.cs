@@ -33,20 +33,16 @@ namespace BankApplicationDataAPI.Controllers
 			{
 				client = new RestClient(DataService);
 
-				// Check if email already exists
 				RestRequest checkRequest = new RestRequest("api/users", Method.Get);
 				RestResponse checkResponse = client.Execute(checkRequest);
 
-				// Deserialize the list of users
 				IEnumerable<User> users = JsonConvert.DeserializeObject<IEnumerable<User>>(checkResponse.Content);
 
-				// Check if a user with the same email exists
 				if (users.Any(u => u.Email.Equals(newUser.Email, StringComparison.OrdinalIgnoreCase)))
 				{
 					return BadRequest("Email already exists. Cannot create new user.");
 				}
 
-				// If email doesn't exist, create the user
 				RestRequest request = new RestRequest("api/users", Method.Post);
 				request.AddJsonBody(newUser);
 				RestResponse response = client.Execute(request);
@@ -56,12 +52,14 @@ namespace BankApplicationDataAPI.Controllers
 					return BadRequest("Could not create user.");
 				}
 
-				Log log = new Log
+
+                Log log = new Log
 				{
 					TimeStamp = DateTime.Now,
 					Action = "Create",
-					LogMessage = "User account created: " + newUser.UserId
+					LogMessage = "User account created"
 				};
+
 				CreateLog(log);
 
 				return CreatedAtAction(nameof(GetUserById), new { id = newUser.UserId }, newUser);
@@ -184,7 +182,7 @@ namespace BankApplicationDataAPI.Controllers
 			if (user != null)
 			{
 				request = new RestRequest($"api/users/{userId}", Method.Put);
-				user.IsActive = !user.IsActive; // Toggle the active status
+				user.IsActive = !user.IsActive; 
 				request.AddJsonBody(user);
 				response = client.Execute(request);
 
@@ -211,98 +209,105 @@ namespace BankApplicationDataAPI.Controllers
 
 
 
-		[HttpGet("search")]
-		public IActionResult Search([FromQuery] string term)
-		{
-			client = new RestClient(DataService);
-			RestRequest request = new RestRequest("api/users", Method.Get);
-			RestResponse response = client.Execute(request);
+        [HttpGet("search")]
+        public IActionResult Search([FromQuery] string term)
+        {
+            client = new RestClient(DataService);
+            RestRequest request = new RestRequest("api/users", Method.Get);
+            RestResponse response = client.Execute(request);
 
-			if (!response.IsSuccessful)
-			{
-				return NotFound("Failed to retrieve users.");
-			}
-
-			IEnumerable<User> allUsers = JsonConvert.DeserializeObject<IEnumerable<User>>(response.Content);
-
-			// Return all users if no search term is provided
-			if (string.IsNullOrWhiteSpace(term))
-			{
-				// Map the users to the desired format and return as an array
-				var userList = allUsers.Select(u => new {
-					u.UserId,
-					u.UserName,
-					u.IsActive,
-					u.Email,
-					u.Phone,
-					u.Address,
-					u.IsAdmin,
-					Accounts = u.Accounts.Select(a => new { a.AccountId, a.AccountName }) // Adjust based on actual account properties
-				}).ToArray(); // Ensure it is an array
-
-				return Ok(userList);
-			}
-
-			// Search for the user by username
-			User user = allUsers.FirstOrDefault(u => u.UserName.Equals(term, StringComparison.OrdinalIgnoreCase));
-
-			if (user == null)
-			{
-				// Try to parse the term as an account number
-				if (int.TryParse(term, out int accountNo))
-				{
-					request = new RestRequest("api/accounts/acctNo/{accNo}", Method.Get);
-					request.AddUrlSegment("accNo", accountNo);
-					response = client.Execute(request);
-
-					if (!response.IsSuccessful)
-					{
-						return NotFound("Account not found.");
-					}
-
-					var account = JsonConvert.DeserializeObject<Account>(response.Content);
-					if (account != null)
-					{
-						int id = account.UserId;
-						request = new RestRequest("api/users/{id}", Method.Get);
-						request.AddUrlSegment("id", id);
-						response = client.Execute(request);
-
-						if (!response.IsSuccessful)
-						{
-							return NotFound("User not found.");
-						}
-
-						user = JsonConvert.DeserializeObject<User>(response.Content);
-					}
-				}
-			}
-
-			// If a user is found, return as an array
-			if (user != null)
-			{
-				// Map the found user to the desired format and return as an array
-				var result = new[] {
-			new {
-				user.UserId,
-				user.UserName,
-				user.IsActive,
-				user.Email,
-				user.Phone,
-				user.Address,
-				user.IsAdmin,
-				Accounts = user.Accounts.Select(a => new { a.AccountId, a.AccountName }) // Adjust based on actual account properties
+            if (!response.IsSuccessful)
+            {
+                return NotFound("Failed to retrieve users.");
             }
-		};
 
-				return Ok(result); // Return the user in an array
-			}
+            IEnumerable<User> allUsers = JsonConvert.DeserializeObject<IEnumerable<User>>(response.Content);
 
-			return NotFound("User not found.");
-		}
+            if (string.IsNullOrWhiteSpace(term))
+            {
+                
+                var userList = allUsers.Select(u => new {
+                    u.UserId,
+                    u.UserName,
+                    u.IsActive,
+                    u.Email,
+                    u.Phone,
+                    u.Address,
+                    u.IsAdmin,
+                    u.Password,
+                    Accounts = u.Accounts.Select(a => new { a.AccountId, a.AccountName }) 
+                }).ToArray();
+
+                return Ok(userList);
+            }
+
+            var matchingUsers = allUsers.Where(u => u.UserName.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (matchingUsers.Any())
+            {
+                var result = matchingUsers.Select(u => new {
+                    u.UserId,
+                    u.UserName,
+                    u.IsActive,
+                    u.Email,
+                    u.Phone,
+                    u.Address,
+                    u.IsAdmin,
+                    u.Password,
+                    Accounts = u.Accounts.Select(a => new { a.AccountId, a.AccountName })
+                }).ToArray();
+
+                return Ok(result);
+            }
+
+            if (int.TryParse(term, out int accountNo))
+            {
+                request = new RestRequest("api/accounts/acctNo/{accNo}", Method.Get);
+                request.AddUrlSegment("accNo", accountNo);
+                response = client.Execute(request);
+
+                if (!response.IsSuccessful)
+                {
+                    return NotFound("Account not found.");
+                }
+
+                var account = JsonConvert.DeserializeObject<Account>(response.Content);
+                if (account != null)
+                {
+                    int id = account.UserId;
+                    request = new RestRequest("api/users/{id}", Method.Get);
+                    request.AddUrlSegment("id", id);
+                    response = client.Execute(request);
+
+                    if (!response.IsSuccessful)
+                    {
+                        return NotFound("User not found.");
+                    }
+
+                    var user = JsonConvert.DeserializeObject<User>(response.Content);
+
+                    var result = new[] {
+                new {
+                    user.UserId,
+                    user.UserName,
+                    user.IsActive,
+                    user.Email,
+                    user.Phone,
+                    user.Address,
+                    user.IsAdmin,
+                    Accounts = user.Accounts.Select(a => new { a.AccountId, a.AccountName }) 
+				}
+            };
+
+                    return Ok(result); 
+                }
+            }
+
+            return NotFound("User not found.");
+        }
 
 
-		[HttpGet("transactions")]
+        [HttpGet("transactions")]
         public IActionResult SearchTransactions([FromQuery] string filter, [FromQuery] string sortOrder)
         {
             client = new RestClient(DataService);
@@ -365,12 +370,11 @@ namespace BankApplicationDataAPI.Controllers
 
             if (string.IsNullOrEmpty(response.Content))
             {
-                return Ok(new List<Transaction>()); // Return an empty list if no content is returned
+                return Ok(new List<Transaction>()); 
             }
 
             IEnumerable<Transaction> transactions = JsonConvert.DeserializeObject<IEnumerable<Transaction>>(response.Content);
 
-            // Sort transactions based on the sortOrder parameter
             transactions = string.IsNullOrEmpty(sortOrder) || sortOrder.ToLower() != "asc"
                 ? transactions.OrderBy(t => t.Amount)
                 : transactions.OrderByDescending(t => t.Amount);
@@ -459,7 +463,6 @@ namespace BankApplicationDataAPI.Controllers
                     acctNo = random.Next();
 
                     client = new RestClient(DataService);
-                    // Check if email already exists
                     RestRequest checkRequest = new RestRequest("api/accounts/acctNo/"+acctNo, Method.Get);
                     RestResponse checkResponse = client.Execute(checkRequest);
                     Console.WriteLine(acctNo);

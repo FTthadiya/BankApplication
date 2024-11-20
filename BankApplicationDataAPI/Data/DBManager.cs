@@ -1,5 +1,8 @@
 ﻿using BankApplicationDataAPI.Models;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
+using System.IO;
 using System.Reflection.Emit;
 using System.Xml.Linq;
 
@@ -26,16 +29,18 @@ namespace BankApplicationDataAPI.Data
 
             String[] fNames = { "Jhon", "Kate" , "Olivia", "Adam", "Peter", "Taylor", "Alice", "Jane", "Bob", "Emma", "Tina", "Hannah"};
             String[] lNames = { "Parker", "Potts", "Brown", "Williams", "White", "Garcia", "Smith", "Jackson", "Wilson", "Doe", "Lee" };
+            String[] streets = { "Beech Street", "Derby Street", "Peel Street", "Church Street", "Milton Street", "Broad Street", "West Street", "High Street", "Brunswick Street", "Oak Street" };
+            String[] state = { "Melbourne", "Sydney", "Perth", "Cairns", "Darwin", "Bendigo", "Mackay", "Ballina", "Albany" };
+            String[] country = { "Victoria", "Queensland", "Tasmania", "South Australia", "Western Australia" };
 
             Random random = new Random();
-
             users.Add(new User
             {
                 UserId = 9999999,
                 UserName = "Admin",
                 Password = "123456",
                 Email = "admin@gmail.com",
-                Address = "232 Ivy Ln, Hilltop, OH",
+                Address = $"{random.Next(100, 999)},{streets[random.Next(0, streets.Length)]},{state[random.Next(0, state.Length)]},{country[random.Next(0, country.Length)]}",
                 Phone = 01239898 + random.Next(0, 10000),
                 IsAdmin = true,
                 IsActive = true
@@ -45,14 +50,13 @@ namespace BankApplicationDataAPI.Data
             {
                 String fName = fNames[random.Next(0, fNames.Length)];
                 String lName = lNames[random.Next(0, lNames.Length)];
-
                 users.Add(new User
                 {
                     UserId = i,
                     UserName = $"{fName} {lName}",
                     Password = "123456",
                     Email = $"{fName}{lName}{i}@gmail.com",
-                    Address = $"Address {i}",
+                    Address = $"{random.Next(100, 999)},{streets[random.Next(0, streets.Length)]},{state[random.Next(0, state.Length)]},{country[random.Next(0, country.Length)]}",
                     Phone = 01239898 + random.Next(0, 10000),
                     IsAdmin = false,
                     IsActive = true
@@ -110,6 +114,9 @@ namespace BankApplicationDataAPI.Data
 
             String[] fNames = { "Jhon", "Kate", "Olivia", "Adam", "Peter", "Taylor", "Alice", "Jane", "Bob", "Emma", "Tina", "Hannah" };
             String[] lNames = { "Parker", "Potts", "Brown", "Williams", "White", "Garcia", "Smith", "Jackson", "Wilson", "Doe", "Lee" };
+            String[] streets = { "Beech Street", "Derby Street", "Peel Street", "Church Street", "Milton Street", "Broad Street", "West Street", "High Street", "Brunswick Street", "Oak Street" };
+            String[] state = { "Melbourne", "Sydney", "Perth", "Cairns", "Darwin", "Bendigo", "Mackay", "Ballina", "Albany" };
+            String[] country = { "Victoria", "Queensland", "Tasmania", "South Australia", "Western Australia" };
 
             Random random = new Random();
 
@@ -119,7 +126,7 @@ namespace BankApplicationDataAPI.Data
                 UserName = "Admin",
                 Password = "123456",
                 Email = "admin@gmail.com",
-                Address = "232 Ivy Ln, Hilltop, OH",
+                Address = $"{random.Next(100, 999)},{streets[random.Next(0, streets.Length)]},{state[random.Next(0, state.Length)]},{country[random.Next(0, country.Length)]}",
                 Phone = 01239898 + random.Next(0, 10000),
                 IsAdmin = true,
                 IsActive = true
@@ -131,7 +138,7 @@ namespace BankApplicationDataAPI.Data
                 UserName = "User",
                 Password = "123456",
                 Email = "user@gmail.com",
-                Address = "232 Ivy Ln, Hilltop, OH",
+                Address = $"{random.Next(100, 999)},{streets[random.Next(0, streets.Length)]},{state[random.Next(0, state.Length)]},{country[random.Next(0, country.Length)]}",
                 Phone = 01239898 + random.Next(0, 10000),
                 IsAdmin = false,
                 IsActive = true
@@ -149,7 +156,7 @@ namespace BankApplicationDataAPI.Data
                     UserName = $"{fName} {lName}",
                     Password = "123456",
                     Email = $"{fName}{lName}{i}@gmail.com",
-                    Address = $"Address {i}",
+                    Address = $"{random.Next(100, 999)},{streets[random.Next(0, streets.Length)]},{state[random.Next(0, state.Length)]},{country[random.Next(0, country.Length)]}",
                     Phone = 01239898 + random.Next(0, 10000),
                     IsAdmin = false,
                     IsActive = true

@@ -65,6 +65,7 @@ namespace BankWebApplication.Controllers
                     withTransaction.Description = description;
                     withTransaction.Amount = amount;
                     withTransaction.Type = "Withdraw";
+                    withTransaction.DateTime = DateTime.Now;
                     withdrawReq.AddBody(withTransaction);
                     RestResponse withdrawRes = client.Execute(withdrawReq);
 
@@ -79,6 +80,7 @@ namespace BankWebApplication.Controllers
                     depoTransaction.Description = description;
                     depoTransaction.Amount = amount;
                     depoTransaction.Type = "Deposit";
+                    withTransaction.DateTime = DateTime.Now;
                     depositReq.AddBody(depoTransaction);
                     RestResponse depositRes = client.Execute(depositReq);
 

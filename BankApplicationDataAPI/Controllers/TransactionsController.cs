@@ -35,7 +35,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
         }
 
@@ -60,7 +60,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
         }
 
@@ -84,7 +84,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
         }
 
@@ -122,7 +122,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
         }
 
@@ -170,7 +170,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
         }
 
@@ -197,7 +197,7 @@ namespace BankApplicationDataAPI.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return Problem("Error occured while processing transactions in data server");
+                return Problem("Error occurred while processing transactions in data server");
             }
            
         }
